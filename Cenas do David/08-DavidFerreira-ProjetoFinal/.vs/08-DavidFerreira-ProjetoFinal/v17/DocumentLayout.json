@@ -31,14 +31,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Menu.cs [Projeto]",
+              "Title": "Menu.cs [Design]",
               "DocumentMoniker": "C:\\Users\\matia\\Documents\\JogosInvicta\\Cenas do David\\08-DavidFerreira-ProjetoFinal\\Menu.cs",
               "RelativeDocumentMoniker": "Menu.cs",
-              "ToolTip": "C:\\Users\\matia\\Documents\\JogosInvicta\\Cenas do David\\08-DavidFerreira-ProjetoFinal\\Menu.cs [Projeto]",
-              "RelativeToolTip": "Menu.cs [Projeto]",
+              "ToolTip": "C:\\Users\\matia\\Documents\\JogosInvicta\\Cenas do David\\08-DavidFerreira-ProjetoFinal\\Menu.cs [Design]",
+              "RelativeToolTip": "Menu.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-25T17:00:00.041Z",
-              "EditorCaption": " [Projeto]"
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -50,8 +50,7 @@
               "RelativeToolTip": "Menu.Designer.cs",
               "ViewState": "AgIAAD8AAAAAAAAAAAAjwGQAAABgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-25T16:51:53.744Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-25T16:51:53.744Z"
             },
             {
               "$type": "Document",
@@ -63,8 +62,7 @@
               "RelativeToolTip": "ShopItem.cs",
               "ViewState": "AgIAAAQAAAAAAAAAAAAMwBUAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-25T16:48:33.317Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-25T16:48:33.317Z"
             }
           ]
         }
