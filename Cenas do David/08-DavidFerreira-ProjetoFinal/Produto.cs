@@ -5,71 +5,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _08_DavidFerreira_ProjetoFinal
+namespace _11ITM_DavidF_JogosInvicta
 {
     public class Produto
     {
+        private int Id;
         private string nomeProduto;
-        private Int16 idProd;
-        private double precoUnit;
-        private double desconto;
+        private int IdProd;
+        private decimal precoUnit;
+        private decimal desconto;
         private string descricao;
-        private Int16 stock;
-        private Int16 idCategoria;
-        private Byte avalProd;
-        private Image foto = null;
-
-        public Produto() { }
-        public Produto(string nomeProduto, Int16 IdProd, double precoUnit, double desconto, string descricao, Int16 stock, Int16 idCategoria, Byte avalProd, Image foto)
-        {
-            this.nomeProduto = nomeProduto;
-            this.idProd = IdProd;
-            this.precoUnit = precoUnit;
-            this.descricao = descricao;
-            this.desconto = desconto;
-            this.stock = stock;
-            this.idCategoria = idCategoria;
-            this.avalProd = avalProd;
-            this.foto = foto;
-        }
-
+        private int stock;
+        private int idCategoria;
+        private int avalProd;
+        private Image foto;
 
         public string NomeProduto { get { return nomeProduto; } set { nomeProduto = value; } }
 
-        public double PrecoUnit { get { return precoUnit; } set { precoUnit = value; } }
+        public decimal PrecoUnit { get { return precoUnit; } set { precoUnit = value; } }
 
-        public double Desconto { get { return desconto; } set { desconto= value; } }
+        public decimal Desconto { get { return desconto; } set { desconto= value; } }
         public Image Foto { get { return foto; } set { foto = value; } }
-        public string Descricao { get { return descricao; } set { descricao = value; } }
-
-        public Int16 IdCategoria { get {  return idCategoria; } set { idCategoria = value; } }
-
-        public Byte AvalProd { get { return avalProd; } set { avalProd = value; } }
-
-        public Int16 Stock
-        {
-            set { stock = value; }
-        }
-        public string StockStatus() { 
-                if (stock > 20)
-                {
-                    return "Em Stock";
-                }
-                else if (stock > 0) { return "Poucas Unidades"; }
-                else return "Esgotado";
-        }
-
-        public Int16 IdProd
-        {
-            get
-            {
-                return idProd;
-            }
-            set
-            {
-                idProd = value;
-            } 
-        }
-
     }
 }

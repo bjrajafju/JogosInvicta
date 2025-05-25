@@ -4,11 +4,8 @@
     <Compile Update="Menu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="ShoppinArea.cs">
+    <Compile Update="ShopItem.cs">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="ShopItemControl.cs">
-      <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
 </Project>
