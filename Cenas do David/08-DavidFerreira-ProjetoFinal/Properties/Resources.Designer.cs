@@ -63,6 +63,26 @@ namespace _08_DavidFerreira_ProjetoFinal.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap accountLogo {
+            get {
+                object obj = ResourceManager.GetObject("accountLogo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cartLogo {
+            get {
+                object obj = ResourceManager.GetObject("cartLogo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap invictaLogo {
             get {
                 object obj = ResourceManager.GetObject("invictaLogo", resourceCulture);

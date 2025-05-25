@@ -53,6 +53,14 @@
             "ReaLTaiizor": {
               "target": "Package",
               "version": "[3.8.1.2, )"
+            },
+            "System.Data.Common": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
+            "System.Data.OleDb": {
+              "target": "Package",
+              "version": "[9.0.5, )"
             }
           },
           "imports": [
