@@ -51,6 +51,7 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+<<<<<<< Updated upstream
               "Title": "ShoppinArea.cs [Projeto]",
               "DocumentMoniker": "C:\\Users\\matia\\Documents\\JogosInvicta\\Cenas do David\\08-DavidFerreira-ProjetoFinal\\ShoppinArea.cs",
               "RelativeDocumentMoniker": "ShoppinArea.cs",
@@ -58,10 +59,20 @@
               "RelativeToolTip": "ShoppinArea.cs [Projeto]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-25T21:15:50.215Z",
+=======
+              "Title": "Menu.cs [Projeto]",
+              "DocumentMoniker": "C:\\Users\\matia\\Documents\\JogosInvicta\\Cenas do David\\08-DavidFerreira-ProjetoFinal\\Menu.cs",
+              "RelativeDocumentMoniker": "Menu.cs",
+              "ToolTip": "C:\\Users\\matia\\Documents\\JogosInvicta\\Cenas do David\\08-DavidFerreira-ProjetoFinal\\Menu.cs [Projeto]*",
+              "RelativeToolTip": "Menu.cs [Projeto]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-25T17:00:00.041Z",
+>>>>>>> Stashed changes
               "EditorCaption": " [Projeto]"
             },
             {
               "$type": "Document",
+<<<<<<< Updated upstream
               "DocumentIndex": 3,
               "Title": "ShopItemControl.cs [Projeto]",
               "DocumentMoniker": "C:\\Users\\matia\\Documents\\JogosInvicta\\Cenas do David\\08-DavidFerreira-ProjetoFinal\\ShopItemControl.cs",
@@ -71,6 +82,18 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-25T21:08:01.289Z",
               "EditorCaption": " [Projeto]"
+=======
+              "DocumentIndex": 1,
+              "Title": "Menu.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\matia\\Documents\\JogosInvicta\\Cenas do David\\08-DavidFerreira-ProjetoFinal\\Menu.Designer.cs",
+              "RelativeDocumentMoniker": "Menu.Designer.cs",
+              "ToolTip": "C:\\Users\\matia\\Documents\\JogosInvicta\\Cenas do David\\08-DavidFerreira-ProjetoFinal\\Menu.Designer.cs*",
+              "RelativeToolTip": "Menu.Designer.cs*",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAjwGQAAABgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-25T16:51:53.744Z",
+              "EditorCaption": ""
+>>>>>>> Stashed changes
             },
             {
               "$type": "Document",
