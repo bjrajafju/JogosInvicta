@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace _11ITM_DavidF_JogosInvicta
+namespace _08_DavidFerreira_ProjetoFinal
 {
     internal static class Program
     {
