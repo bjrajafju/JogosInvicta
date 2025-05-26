@@ -72,6 +72,7 @@
             // cboProdutores
             // 
             cboProdutores.Dock = DockStyle.Fill;
+            cboProdutores.DropDownStyle = ComboBoxStyle.DropDownList;
             cboProdutores.FormattingEnabled = true;
             cboProdutores.Items.AddRange(new object[] { "--Escolher Produtor--" });
             cboProdutores.Location = new Point(14, 25);
@@ -79,6 +80,7 @@
             cboProdutores.Name = "cboProdutores";
             cboProdutores.Size = new Size(606, 33);
             cboProdutores.TabIndex = 0;
+            cboProdutores.SelectedIndexChanged += cboProdutores_SelectedIndexChanged_1;
             // 
             // panel4
             // 
@@ -102,6 +104,7 @@
             // cboFranchise
             // 
             cboFranchise.Dock = DockStyle.Fill;
+            cboFranchise.DropDownStyle = ComboBoxStyle.DropDownList;
             cboFranchise.FormattingEnabled = true;
             cboFranchise.Items.AddRange(new object[] { "-- Escolher Franchise--" });
             cboFranchise.Location = new Point(14, 25);

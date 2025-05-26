@@ -30,3 +30,4 @@ C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFin
 C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFinal\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.dll
 C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFinal\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Diagnostics.PerformanceCounter.dll
 C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFinal\obj\Debug\net8.0-windows\_08_DavidFerreira_ProjetoFinal.ShopItemControl.resources
+C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFinal\obj\Debug\net8.0-windows\_08_DavidFerreira_ProjetoFinal.ProductPage.resources

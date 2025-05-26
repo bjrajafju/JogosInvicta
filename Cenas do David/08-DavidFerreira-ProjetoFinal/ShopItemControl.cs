@@ -14,6 +14,7 @@ namespace _08_DavidFerreira_ProjetoFinal
     {
         private Produto produto = null!;
 
+        public delegate void ProductSelectedEventHandler(object sender, ProdutoEventArgs e);
         public Produto Produto
         {
             get { return produto; }
@@ -23,8 +24,20 @@ namespace _08_DavidFerreira_ProjetoFinal
         public ShopItemControl(Produto p)
         {
             InitializeComponent();
+            groupBox1.Click += Sent_OnClick;
+            stockTextBox.Click += Sent_OnClick;
+            lblPrice.Click += Sent_OnClick;
+            lblProductName.Click += Sent_OnClick;
+            pictureBox1.Click +=Sent_OnClick;
             produto = p;
             loadShopItem();
+        }
+
+        public event ProductSelectedEventHandler? ProductSelected;
+
+        public void Sent_OnClick(object? sender, EventArgs e)
+        {
+            ProductSelected?.Invoke(this, new ProdutoEventArgs(produto));
         }
 
         public int loadShopItem()
@@ -39,23 +52,23 @@ namespace _08_DavidFerreira_ProjetoFinal
             {
                 double precoComDesconto = produto.PrecoUnit - (produto.PrecoUnit * produto.Desconto);
                 precoComDesconto = Math.Round(precoComDesconto, 2);
-                string precoComDescontoTexto = "Preço com Desconto: " + precoComDesconto + "€ ";
+                string precoComDescontoTexto = "Preço com Desconto: " + precoComDesconto + "€\n";
                 string precoOriginalTexto = "Preço Unitário: " + produto.PrecoUnit + "€";
 
                 string textoCompleto = precoComDescontoTexto + precoOriginalTexto;
 
-                string precoAtual = produto.PrecoUnit.ToString();
+                string precoAtual = precoComDesconto + "€";
 
                 lblPrice.Text = textoCompleto;
 
 
                 //DETALHES VISUAIS
-                { 
+                {
                     int startIndex = textoCompleto.IndexOf(precoAtual);
                     if (startIndex >= 0)
                     {
                         lblPrice.Select(startIndex, precoAtual.Length);
-                        lblPrice.SelectionFont = new Font(lblPrice.Font, FontStyle.Strikeout);
+                        lblPrice.SelectionFont = new Font(lblPrice.Font, FontStyle.Bold);
                         lblPrice.SelectionColor = Color.Green;
                         lblPrice.Select(0, 0);
                     }
@@ -72,14 +85,28 @@ namespace _08_DavidFerreira_ProjetoFinal
                 }
             }
 
-            if (produto.Foto != null)
+
+            pictureBox1.Image = produto.Foto;
+            if (produto.StockStatus() == "Esgotado")
             {
-                pictureBox1.Image = produto.Foto;
+                stockTextBox.ForeColor = GlobalVars.noStockColor;
             }
+            else if (produto.StockStatus() == "Poucas Unidades")
+            {
+                stockTextBox.ForeColor = GlobalVars.limitedStockColor;
+            } 
+            else if (produto.StockStatus() == "Pré-reserva")
+            {
+                stockTextBox.ForeColor = GlobalVars.preOrder;
+            }
+            else
+            {
+                stockTextBox.ForeColor = GlobalVars.stockColor;
+            }
+            stockTextBox.Text = produto.StockStatus();
 
             return -1;
         }
-
 
     }
 }

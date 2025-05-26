@@ -12,24 +12,37 @@ namespace _08_DavidFerreira_ProjetoFinal
 {
     public partial class ShoppinArea : Form
     {
-        public Produto[] produtosTotais;
-        public ShopItemControl[] itemsTotais;
+        public delegate void ProductSelectedChangePage(object sender, ProdutoEventArgs e);
+
+        public event ProductSelectedChangePage? OnProductSelectedChangePage;
+
+        public Produto[]? produtosTotais;
+        public Category[]? categoriasTotais;
+        public Produtor[]? produtorTotais;
+        public List<ShopItemControl>? itemsTotais = null;
         public ShoppinArea()
         {
             InitializeComponent();
         }
 
+        public void sendEventToMenu(object sender, ProdutoEventArgs e)
+        {
+            OnProductSelectedChangePage?.Invoke(this, e);
+        }
 
         private void ShoppinArea_Load(object sender, EventArgs e)
         {
+            produtosTotais = DataRetrieval.retrieveProducts(GlobalVars.strProvider);
+            produtorTotais = DataRetrieval.retrieveProdutores(GlobalVars.strProvider);
 
-            string strProvider = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source = .\\..\\..\\..\\..\\..\\06-08-DanielSilva-DavidFerreira-Empresa.accdb;Persist Security Info = False";
-
-            produtosTotais = ProdutosRetrieval.retrieveProducts(strProvider);
+            for (int i = 0; i < produtorTotais.Length; i++)
+            {
+                cboProdutores.Items.Add(produtorTotais[i].StrProdutor);
+            }
 
             if (produtosTotais != null)
             {
-                loadShoppingItems();
+                loadShoppingItems(FilterFunctions.noFilter);
 
                 //NESTE CASO ESPECÍFICO NÃO QUERO QUE ELE FAÇA O INDEXCHANGED
                 //assim, descolo e volto a colar o método
@@ -37,58 +50,68 @@ namespace _08_DavidFerreira_ProjetoFinal
                 cboFranchise.SelectedIndexChanged -= cboFranchise_SelectedIndexChanged;
                 cboFranchise.SelectedIndex = 0;
                 cboFranchise.SelectedIndexChanged += cboFranchise_SelectedIndexChanged;
-                cboProdutores.SelectedIndexChanged -= cboProdutores_SelectedIndexChanged;
+                cboProdutores.SelectedIndexChanged -= cboProdutores_SelectedIndexChanged_1;
                 cboProdutores.SelectedIndex = 0;
-                cboFranchise.SelectedIndexChanged += cboProdutores_SelectedIndexChanged;
-
-
+                cboProdutores.SelectedIndexChanged += cboProdutores_SelectedIndexChanged_1;
             }
-
         }
 
 
-        private void loadShoppingItems()
+        private void loadShoppingItems(Func<Produto, string, bool> filtro, string restriction = "")
         {
-            itemsTotais = new ShopItemControl[produtosTotais.Length];
-
-            for(int i = 0; i< produtosTotais.Length; i++)
+            if (itemsTotais != null)
             {
-                itemsTotais[i]= new ShopItemControl(produtosTotais[i]);
-                fpnlShopItems.Controls.Add(itemsTotais[i]);
-                itemsTotais[i].Show();
+                fpnlShopItems.Controls.Clear();
+                foreach (var item in itemsTotais)
+                {
+                    item.Dispose();
+                }
+                itemsTotais.Clear();
+            }
+            itemsTotais = new List<ShopItemControl>();
+            int idxTotItems = 0;
+            for (int i = 0; i < produtosTotais?.Length; i++)
+            {
+                if (filtro(produtosTotais[i], restriction))
+                {
+                    itemsTotais.Add(new ShopItemControl(produtosTotais[i]));
+                    itemsTotais[idxTotItems].ProductSelected += sendEventToMenu;
+                    fpnlShopItems.Controls.Add(itemsTotais[idxTotItems]);
+                    itemsTotais[idxTotItems].Show();
+                    idxTotItems++;
+                }
             }
 
 
             return;
         }
 
-        private void cboProdutores_SelectedIndexChanged(object sender, EventArgs e)
+        private void cboFranchise_SelectedIndexChanged(object? sender, EventArgs e)
         {
             //Valid Index
-            if (cboProdutores.SelectedIndex > 1)
+            if (cboFranchise.SelectedIndex < 1)
             {
-
+                loadShoppingItems(FilterFunctions.noFilter);
             }
             else
             {
-                loadShoppingItems();
+
             }
             //reset other stuff index
         }
 
-        private void cboFranchise_SelectedIndexChanged(object sender, EventArgs e)
+        private void cboProdutores_SelectedIndexChanged_1(object? sender, EventArgs e)
         {
             //Valid Index
-            if (cboFranchise.SelectedIndex > 1)
+            if (cboProdutores.SelectedIndex < 1)
             {
-
+                loadShoppingItems(FilterFunctions.noFilter);
             }
             else
             {
-                loadShoppingItems();
+                loadShoppingItems(FilterFunctions.filterProds, cboProdutores.SelectedItem.ToString());
             }
             //reset other stuff index
         }
-
     }
 }

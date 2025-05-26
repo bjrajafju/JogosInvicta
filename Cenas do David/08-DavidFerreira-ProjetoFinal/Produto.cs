@@ -9,18 +9,19 @@ namespace _08_DavidFerreira_ProjetoFinal
 {
     public class Produto
     {
-        private string nomeProduto;
-        private Int16 idProd;
-        private double precoUnit;
-        private double desconto;
-        private string descricao;
-        private Int16 stock;
-        private Int16 idCategoria;
-        private Byte avalProd;
-        private Image foto = null;
+        private string nomeProduto = "";
+        private Int32 idProd = 0;
+        private double precoUnit = 0;
+        private double desconto = 0;
+        private string descricao ="";
+        private Int16 stock = 0;
+        private Int16 idCategoria = 0;
+        private Byte avalProd = 0;
+        private Image? foto = null;
 
-        public Produto() { }
-        public Produto(string nomeProduto, Int16 IdProd, double precoUnit, double desconto, string descricao, Int16 stock, Int16 idCategoria, Byte avalProd, Image foto)
+        public Produto() {
+        }
+        public Produto(string nomeProduto, Int32 IdProd, double precoUnit, double desconto, string descricao, Int16 stock, Int16 idCategoria, Byte avalProd, Image foto)
         {
             this.nomeProduto = nomeProduto;
             this.idProd = IdProd;
@@ -39,7 +40,7 @@ namespace _08_DavidFerreira_ProjetoFinal
         public double PrecoUnit { get { return precoUnit; } set { precoUnit = value; } }
 
         public double Desconto { get { return desconto; } set { desconto= value; } }
-        public Image Foto { get { return foto; } set { foto = value; } }
+        public Image? Foto { get { return foto; } set { foto = value; } }
         public string Descricao { get { return descricao; } set { descricao = value; } }
 
         public Int16 IdCategoria { get {  return idCategoria; } set { idCategoria = value; } }
@@ -48,7 +49,7 @@ namespace _08_DavidFerreira_ProjetoFinal
 
         public Int16 Stock
         {
-            set { stock = value; }
+            get { return stock; } set { stock = value; }
         }
         public string StockStatus() { 
                 if (stock > 20)
@@ -59,7 +60,9 @@ namespace _08_DavidFerreira_ProjetoFinal
                 else return "Esgotado";
         }
 
-        public Int16 IdProd
+
+
+        public Int32 IdProd
         {
             get
             {
