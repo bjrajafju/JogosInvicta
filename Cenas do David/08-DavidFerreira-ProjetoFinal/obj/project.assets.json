@@ -20,22 +20,6 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "ReaLTaiizor/3.8.1.2": {
-        "type": "package",
-        "compile": {
-          "lib/net8.0-windows7.0/ReaLTaiizor.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net8.0-windows7.0/ReaLTaiizor.dll": {
-            "related": ".xml"
-          }
-        },
-        "frameworkReferences": [
-          "Microsoft.WindowsDesktop.App.WindowsForms"
-        ]
-      },
       "System.Collections/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -348,36 +332,6 @@
         "microsoft.netcore.targets.1.1.0.nupkg.sha512",
         "microsoft.netcore.targets.nuspec",
         "runtime.json"
-      ]
-    },
-    "ReaLTaiizor/3.8.1.2": {
-      "sha512": "sbGxNe+9boFNoEp1FqP6P9BjJTRMJzWnfUT6+0jl8MajTo/xDYGIQF61OL/5Fw/k+tRxbMgtarQOr0CwFdSlTw==",
-      "type": "package",
-      "path": "realtaiizor/3.8.1.2",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE",
-        "README.MD",
-        "Taiizor.png",
-        "lib/net10.0-windows7.0/ReaLTaiizor.dll",
-        "lib/net10.0-windows7.0/ReaLTaiizor.xml",
-        "lib/net48/ReaLTaiizor.dll",
-        "lib/net48/ReaLTaiizor.xml",
-        "lib/net481/ReaLTaiizor.dll",
-        "lib/net481/ReaLTaiizor.xml",
-        "lib/net6.0-windows7.0/ReaLTaiizor.dll",
-        "lib/net6.0-windows7.0/ReaLTaiizor.xml",
-        "lib/net7.0-windows7.0/ReaLTaiizor.dll",
-        "lib/net7.0-windows7.0/ReaLTaiizor.xml",
-        "lib/net8.0-windows7.0/ReaLTaiizor.dll",
-        "lib/net8.0-windows7.0/ReaLTaiizor.xml",
-        "lib/net9.0-windows7.0/ReaLTaiizor.dll",
-        "lib/net9.0-windows7.0/ReaLTaiizor.xml",
-        "lib/netcoreapp3.1/ReaLTaiizor.dll",
-        "lib/netcoreapp3.1/ReaLTaiizor.xml",
-        "realtaiizor.3.8.1.2.nupkg.sha512",
-        "realtaiizor.nuspec"
       ]
     },
     "System.Collections/4.3.0": {
@@ -1399,7 +1353,6 @@
   },
   "projectFileDependencyGroups": {
     "net8.0-windows7.0": [
-      "ReaLTaiizor >= 3.8.1.2",
       "System.Data.Common >= 4.3.0",
       "System.Data.OleDb >= 9.0.5"
     ]
@@ -1454,10 +1407,6 @@
       "net8.0-windows7.0": {
         "targetAlias": "net8.0-windows",
         "dependencies": {
-          "ReaLTaiizor": {
-            "target": "Package",
-            "version": "[3.8.1.2, )"
-          },
           "System.Data.Common": {
             "target": "Package",
             "version": "[4.3.0, )"

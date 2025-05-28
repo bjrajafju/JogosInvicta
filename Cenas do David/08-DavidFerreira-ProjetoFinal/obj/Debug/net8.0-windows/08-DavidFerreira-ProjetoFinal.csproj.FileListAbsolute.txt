@@ -3,7 +3,6 @@ C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFin
 C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFinal\bin\Debug\net8.0-windows\08-DavidFerreira-ProjetoFinal.runtimeconfig.json
 C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFinal\bin\Debug\net8.0-windows\08-DavidFerreira-ProjetoFinal.dll
 C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFinal\bin\Debug\net8.0-windows\08-DavidFerreira-ProjetoFinal.pdb
-C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFinal\bin\Debug\net8.0-windows\ReaLTaiizor.dll
 C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFinal\obj\Debug\net8.0-windows\08-DavidFerreira-ProjetoFinal.csproj.AssemblyReference.cache
 C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFinal\obj\Debug\net8.0-windows\_08_DavidFerreira_ProjetoFinal.Properties.Resources.resources
 C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFinal\obj\Debug\net8.0-windows\08-DavidFerreira-ProjetoFinal.csproj.GenerateResource.cache
@@ -31,3 +30,9 @@ C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFin
 C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFinal\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Diagnostics.PerformanceCounter.dll
 C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFinal\obj\Debug\net8.0-windows\_08_DavidFerreira_ProjetoFinal.ShopItemControl.resources
 C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFinal\obj\Debug\net8.0-windows\_08_DavidFerreira_ProjetoFinal.ProductPage.resources
+C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFinal\obj\Debug\net8.0-windows\_08_DavidFerreira_ProjetoFinal.ButaoCategoria.resources
+C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFinal\obj\Debug\net8.0-windows\_08_DavidFerreira_ProjetoFinal.ShoppingCart.resources
+C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFinal\obj\Debug\net8.0-windows\_08_DavidFerreira_ProjetoFinal.AccountOptionsLoggedOut.resources
+C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFinal\obj\Debug\net8.0-windows\_08_DavidFerreira_ProjetoFinal.Login.resources
+C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFinal\obj\Debug\net8.0-windows\_08_DavidFerreira_ProjetoFinal.AccountOptionsLoggedIn.resources
+C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFinal\obj\Debug\net8.0-windows\_08_DavidFerreira_ProjetoFinal.Registar.resources

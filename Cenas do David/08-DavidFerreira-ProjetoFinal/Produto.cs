@@ -18,10 +18,10 @@ namespace _08_DavidFerreira_ProjetoFinal
         private Int16 idCategoria = 0;
         private Byte avalProd = 0;
         private Image? foto = null;
-
+        private int idFranchise = 0;
         public Produto() {
         }
-        public Produto(string nomeProduto, Int32 IdProd, double precoUnit, double desconto, string descricao, Int16 stock, Int16 idCategoria, Byte avalProd, Image foto)
+        public Produto(string nomeProduto, Int32 IdProd, double precoUnit, double desconto, string descricao, Int16 stock, Int16 idCategoria, Byte avalProd, int franchise, Image foto)
         {
             this.nomeProduto = nomeProduto;
             this.idProd = IdProd;
@@ -32,6 +32,7 @@ namespace _08_DavidFerreira_ProjetoFinal
             this.idCategoria = idCategoria;
             this.avalProd = avalProd;
             this.foto = foto;
+            this.idFranchise = franchise;
         }
 
 
@@ -52,7 +53,7 @@ namespace _08_DavidFerreira_ProjetoFinal
             get { return stock; } set { stock = value; }
         }
         public string StockStatus() { 
-                if (stock > 20)
+                if (stock > 5)
                 {
                     return "Em Stock";
                 }
@@ -73,6 +74,8 @@ namespace _08_DavidFerreira_ProjetoFinal
                 idProd = value;
             } 
         }
+
+        public int IdFranchise { get { return idFranchise; } set { idFranchise = value; }}
 
     }
 }

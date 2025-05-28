@@ -123,8 +123,8 @@ namespace _08_DavidFerreira_ProjetoFinal
 
             txtDesciption.Text = currentProduct.Descricao;
 
-            txtInfo.AppendText("Produtor: " + (DataRetrieval.retrieveProdutorFromIdx(GlobalVars.strProvider, currentProduct.IdProd)).ToString() + '\n');
-            txtInfo.AppendText("Categoria: " + (DataRetrieval.retrieveCategoriaFromIdx(GlobalVars.strProvider, currentProduct.IdCategoria)).ToString());
+            txtInfo.AppendText("Produtor: "+(DataManagement.retrieveStrings(GlobalVars.strProvider, "Produtor", "nomeProdutor", "IdProdutor = " + currentProduct.IdProd))[0][0].ToString() + '\n');
+            txtInfo.AppendText("Categoria: " + (DataManagement.retrieveStrings(GlobalVars.strProvider, "Categoria", "categoriaProduto", "IdCategoria = " + currentProduct.IdCategoria))[0][0].ToString());
         }
 
         private void button1_Click(object sender, EventArgs e)

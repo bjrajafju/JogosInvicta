@@ -50,10 +50,6 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "dependencies": {
-            "ReaLTaiizor": {
-              "target": "Package",
-              "version": "[3.8.1.2, )"
-            },
             "System.Data.Common": {
               "target": "Package",
               "version": "[4.3.0, )"

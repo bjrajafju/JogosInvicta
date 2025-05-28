@@ -10,12 +10,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ReaLTaiizor" Version="3.8.1.2" />
     <PackageReference Include="System.Data.Common" Version="4.3.0" />
     <PackageReference Include="System.Data.OleDb" Version="9.0.5" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
