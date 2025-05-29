@@ -23,6 +23,7 @@ namespace _08_DavidFerreira_ProjetoFinal
         public List<string>? categoriasTotais = null;
         public List<string>? produtorTotais = null;
         public List<string>? franchiseTotais = null;
+
         public List<ShopItemControl>? itemsTotais = null;
         public ShoppinArea()
         {
@@ -71,15 +72,10 @@ namespace _08_DavidFerreira_ProjetoFinal
 
         public void recievedCategory(object sender, StringEventArgs e)
         {
-            btnRefresh.Visible = true;
             loadShoppingItems(FilterFunctions.filterCat, e.Str);
             resetCboIndexes();
         }
 
-        public void setBtnRefreshVisible(bool b)
-        {
-            btnRefresh.Visible=b;
-        }
 
         public void resetCboIndexes()
         {
@@ -120,7 +116,11 @@ namespace _08_DavidFerreira_ProjetoFinal
                     idxTotItems++;
                 }
             }
-            if(itemsTotais.Count == 0)
+            if(restriction == "")
+            {
+                btnRefresh.Visible = false;
+            } else btnRefresh.Visible = true;
+            if (itemsTotais.Count == 0)
             {
                 Label lbl = new Label();
                 lbl.Text = "Nenhum Produto Corresponde à Pesquisa";
@@ -146,7 +146,6 @@ namespace _08_DavidFerreira_ProjetoFinal
             }
             else
             {
-                btnRefresh.Visible = true;
                 loadShoppingItems(FilterFunctions.filterFranchise, cboFranchise.SelectedItem.ToString());
             }
             //reset other stuff index
@@ -164,7 +163,6 @@ namespace _08_DavidFerreira_ProjetoFinal
             }
             else
             {
-                btnRefresh.Visible = true;
                 loadShoppingItems(FilterFunctions.filterProds, cboProdutores.SelectedItem.ToString());
             }
             //reset other stuff index
@@ -173,7 +171,6 @@ namespace _08_DavidFerreira_ProjetoFinal
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             loadShoppingItems(FilterFunctions.noFilter);
-            btnRefresh.Visible = false;
             resetCboIndexes();
         }
     }

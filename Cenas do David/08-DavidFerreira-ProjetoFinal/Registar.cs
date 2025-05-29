@@ -14,9 +14,35 @@ namespace _08_DavidFerreira_ProjetoFinal
     public partial class Registar : Form
     {
         public event EventHandler? onSucessfulRegistry;
+        public event EventHandler? onCanceledRegistry;
         public Registar()
         {
             InitializeComponent();
+        }
+
+        public void resetTxtBoxes()
+        {
+            foreach (Control txt in panel1.Controls)
+            {
+                if (txt.GetType() == txtNomeUtilizador.GetType())
+                {
+                    txt.Text = "";
+                }
+            }
+            foreach (Control txt in panel2.Controls)
+            {
+                if(txt.GetType() == txtNomeUtilizador.GetType())
+                {
+                    txt.Text = "";
+                }
+            }
+            foreach (Control txt in panel3.Controls)
+            {
+                if (txt.GetType() == txtNomeUtilizador.GetType())
+                {
+                    txt.Text = "";
+                }
+            }
         }
 
         private void btnRegister_Click_1(object sender, EventArgs e)
@@ -54,7 +80,7 @@ namespace _08_DavidFerreira_ProjetoFinal
                 }
             }
 
-            if(!txtEmail.Text.Contains('@') && !txtEmail.Text.Contains('.'))
+            if (!txtEmail.Text.Contains('@') && !txtEmail.Text.Contains('.'))
             {
                 MessageBox.Show("Email Inválido");
                 return;
@@ -87,12 +113,14 @@ namespace _08_DavidFerreira_ProjetoFinal
             values.Add(txtRua.Text);
             values.Add(txtCodPostal.Text);
             values.Add(txtCidade.Text);
-            values.Add(DataManagement.retrieveStrings(GlobalVars.strProvider, "Paises", "IdPais", "Pais ='" + cboPaíses?.SelectedItem.ToString() + "'")[0][0]);
+            values.Add(DataManagement.retrieveStrings(GlobalVars.strProvider, "Paises", "IdPais", "Pais ='" + cboPaíses?.SelectedItem?.ToString() + "'")[0][0]);
             values.Add(txtPassword.Text);
             int n = DataManagement.insertIntoDatabase(GlobalVars.strProvider, "Cliente", colunas, values);
-            if (n == GlobalVars.aOk) {
+            if (n == GlobalVars.aOk)
+            {
                 MessageBox.Show("Registo Efetuado Com Sucesso!");
                 onSucessfulRegistry?.Invoke(sender, EventArgs.Empty);
+                resetTxtBoxes();
             }
             else
             {
@@ -104,10 +132,16 @@ namespace _08_DavidFerreira_ProjetoFinal
         private void Registar_Load(object sender, EventArgs e)
         {
             List<string>? list = DataManagement.mergeListListString(DataManagement.retrieveStrings(GlobalVars.strProvider, "Paises", "Pais"));
-            for (int i = 0; i < list.Count; i++)
+            for (int i = 0; i < list?.Count; i++)
             {
                 cboPaíses.Items.Add(list[i]);
             }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            resetTxtBoxes();
+            onCanceledRegistry?.Invoke(sender, EventArgs.Empty);
         }
     }
 }

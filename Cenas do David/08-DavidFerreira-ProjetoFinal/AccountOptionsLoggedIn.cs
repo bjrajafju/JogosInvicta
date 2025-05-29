@@ -13,6 +13,8 @@ namespace _08_DavidFerreira_ProjetoFinal
     public partial class AccountOptionsLoggedIn : UserControl
     {
         public event EventHandler? logout;
+        public event EventHandler? perfilAccess;
+
         public AccountOptionsLoggedIn()
         {
             InitializeComponent();
@@ -25,6 +27,11 @@ namespace _08_DavidFerreira_ProjetoFinal
             {
                 logout?.Invoke(this, EventArgs.Empty);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            perfilAccess?.Invoke(this, EventArgs.Empty);
         }
     }
 }

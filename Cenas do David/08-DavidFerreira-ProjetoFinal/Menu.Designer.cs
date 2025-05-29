@@ -55,11 +55,11 @@
             pnlHeader.Controls.Add(pictureBox1);
             pnlHeader.Dock = DockStyle.Top;
             pnlHeader.Location = new Point(0, 0);
-            pnlHeader.Margin = new Padding(23);
-            pnlHeader.MinimumSize = new Size(0, 89);
+            pnlHeader.Margin = new Padding(33, 38, 33, 38);
+            pnlHeader.MinimumSize = new Size(0, 148);
             pnlHeader.Name = "pnlHeader";
-            pnlHeader.Padding = new Padding(12, 11, 12, 11);
-            pnlHeader.Size = new Size(1198, 89);
+            pnlHeader.Padding = new Padding(17, 18, 17, 18);
+            pnlHeader.Size = new Size(1711, 148);
             pnlHeader.TabIndex = 0;
             // 
             // panel3
@@ -67,23 +67,21 @@
             panel3.Controls.Add(txtSearch);
             panel3.Controls.Add(btnSearch);
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(415, 11);
-            panel3.Margin = new Padding(2);
+            panel3.Location = new Point(611, 18);
             panel3.Name = "panel3";
-            panel3.Padding = new Padding(21, 18, 21, 18);
-            panel3.Size = new Size(581, 67);
+            panel3.Padding = new Padding(30);
+            panel3.Size = new Size(811, 112);
             panel3.TabIndex = 8;
             // 
             // txtSearch
             // 
             txtSearch.Dock = DockStyle.Right;
             txtSearch.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtSearch.Location = new Point(157, 18);
-            txtSearch.Margin = new Padding(2);
+            txtSearch.Location = new Point(207, 30);
             txtSearch.Name = "txtSearch";
             txtSearch.PlaceholderText = "Pesquise Aqui";
             txtSearch.RightToLeft = RightToLeft.No;
-            txtSearch.Size = new Size(371, 32);
+            txtSearch.Size = new Size(528, 44);
             txtSearch.TabIndex = 10;
             // 
             // btnSearch
@@ -95,10 +93,9 @@
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.ForeColor = SystemColors.ControlText;
             btnSearch.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSearch.Location = new Point(528, 18);
-            btnSearch.Margin = new Padding(2);
+            btnSearch.Location = new Point(735, 30);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(32, 31);
+            btnSearch.Size = new Size(46, 52);
             btnSearch.TabIndex = 9;
             btnSearch.TextAlign = ContentAlignment.MiddleRight;
             btnSearch.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -108,10 +105,9 @@
             // panel2
             // 
             panel2.Dock = DockStyle.Right;
-            panel2.Location = new Point(996, 11);
-            panel2.Margin = new Padding(2);
+            panel2.Location = new Point(1422, 18);
             panel2.Name = "panel2";
-            panel2.Size = new Size(58, 67);
+            panel2.Size = new Size(83, 112);
             panel2.TabIndex = 6;
             // 
             // btnCart
@@ -123,10 +119,9 @@
             btnCart.FlatAppearance.BorderSize = 0;
             btnCart.FlatStyle = FlatStyle.Flat;
             btnCart.ForeColor = Color.Transparent;
-            btnCart.Location = new Point(1054, 11);
-            btnCart.Margin = new Padding(2);
+            btnCart.Location = new Point(1505, 18);
             btnCart.Name = "btnCart";
-            btnCart.Size = new Size(65, 67);
+            btnCart.Size = new Size(93, 112);
             btnCart.TabIndex = 5;
             btnCart.UseVisualStyleBackColor = false;
             // 
@@ -139,11 +134,10 @@
             btnAccount.FlatAppearance.BorderSize = 0;
             btnAccount.FlatStyle = FlatStyle.Flat;
             btnAccount.ForeColor = Color.Transparent;
-            btnAccount.Location = new Point(1119, 11);
-            btnAccount.Margin = new Padding(2);
+            btnAccount.Location = new Point(1598, 18);
             btnAccount.Name = "btnAccount";
-            btnAccount.Padding = new Padding(30);
-            btnAccount.Size = new Size(67, 67);
+            btnAccount.Padding = new Padding(43, 50, 43, 50);
+            btnAccount.Size = new Size(96, 112);
             btnAccount.TabIndex = 1;
             btnAccount.UseVisualStyleBackColor = false;
             btnAccount.Click += btnAccount_Click;
@@ -154,11 +148,10 @@
             lblAppName.Dock = DockStyle.Left;
             lblAppName.Font = new Font("Arial Black", 25F);
             lblAppName.ForeColor = SystemColors.ButtonFace;
-            lblAppName.Location = new Point(79, 11);
-            lblAppName.Margin = new Padding(2, 0, 2, 0);
+            lblAppName.Location = new Point(113, 18);
             lblAppName.Name = "lblAppName";
-            lblAppName.Padding = new Padding(18, 9, 0, 0);
-            lblAppName.Size = new Size(336, 57);
+            lblAppName.Padding = new Padding(26, 15, 0, 0);
+            lblAppName.Size = new Size(498, 85);
             lblAppName.TabIndex = 4;
             lblAppName.Text = "JOGOS INVICTA";
             lblAppName.TextAlign = ContentAlignment.MiddleCenter;
@@ -168,10 +161,9 @@
             // 
             pictureBox1.Dock = DockStyle.Left;
             pictureBox1.Image = Properties.Resources.invictaLogo;
-            pictureBox1.Location = new Point(12, 11);
-            pictureBox1.Margin = new Padding(2);
+            pictureBox1.Location = new Point(17, 18);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(67, 67);
+            pictureBox1.Size = new Size(96, 112);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -181,33 +173,30 @@
             // 
             panel1.BackColor = Color.MidnightBlue;
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 564);
-            panel1.Margin = new Padding(2);
+            panel1.Location = new Point(0, 940);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1198, 65);
+            panel1.Size = new Size(1711, 108);
             panel1.TabIndex = 2;
             // 
             // pnlAccountOptions
             // 
             pnlAccountOptions.Dock = DockStyle.Right;
-            pnlAccountOptions.Location = new Point(1104, 89);
-            pnlAccountOptions.Margin = new Padding(2);
+            pnlAccountOptions.Location = new Point(1577, 148);
             pnlAccountOptions.Name = "pnlAccountOptions";
-            pnlAccountOptions.Size = new Size(94, 475);
+            pnlAccountOptions.Size = new Size(134, 792);
             pnlAccountOptions.TabIndex = 3;
             // 
             // Menu
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new Size(1198, 629);
+            ClientSize = new Size(1711, 1048);
             Controls.Add(pnlAccountOptions);
             Controls.Add(panel1);
             Controls.Add(pnlHeader);
             IsMdiContainer = true;
-            Margin = new Padding(2);
-            MinimumSize = new Size(1198, 626);
+            MinimumSize = new Size(1702, 1006);
             Name = "Menu";
             SizeGripStyle = SizeGripStyle.Show;
             StartPosition = FormStartPosition.CenterScreen;

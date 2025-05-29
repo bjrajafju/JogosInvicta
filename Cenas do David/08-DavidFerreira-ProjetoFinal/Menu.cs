@@ -19,6 +19,7 @@ namespace _08_DavidFerreira_ProjetoFinal
         private ProductPage productPage = null!;
         private Login loginPage = null!;
         private Registar registryPage = null!;
+        private PerfilUtilizador perfilUtilizador = null!;
 
         private int customerId = -1;
         public Menu()
@@ -53,6 +54,7 @@ namespace _08_DavidFerreira_ProjetoFinal
             shoppingAreaForm.Activate();
             AccountOptionsLoggedIn acc = new AccountOptionsLoggedIn();
             acc.logout += Logout;
+            acc.perfilAccess += ProfileLoad;
             pnlAccountOptions.Controls.Add(acc);
         }
 
@@ -85,6 +87,7 @@ namespace _08_DavidFerreira_ProjetoFinal
             acc.RegisterClicked += RegisterLoad;
             pnlAccountOptions.Controls.Add(acc);
             acc.Dock = DockStyle.Top;
+            shoppingAreaForm.Activate();
         }
 
         private void returnToHome(object? sender, EventArgs e)
@@ -92,24 +95,28 @@ namespace _08_DavidFerreira_ProjetoFinal
             if(shoppingAreaForm != null) { shoppingAreaForm.Activate(); }
         }
 
+
         private void RegisterLoad(object? sender, EventArgs e)
         {
             if (registryPage != null)
             {
+                registryPage.resetTxtBoxes();
                 registryPage.Activate();
             }
             else
             {
                 registryPage = new Registar();
                 registryPage.MdiParent = this;
-                registryPage.onSucessfulRegistry += returnToHome;
+                registryPage.onSucessfulRegistry += LoginLoad;
+                registryPage.onCanceledRegistry += returnToHome;
                 registryPage.Dock = DockStyle.Fill;
+                registryPage.Show();
             }
             while (pnlAccountOptions.Size.Width > 0)
             {
                 pnlAccountOptions.Size = new Size(pnlAccountOptions.Size.Width - 10, pnlAccountOptions.Size.Height);
             }
-            registryPage.Show();
+
         }
 
         private void detailedItemLoad(object sender, ProdutoEventArgs e)
@@ -129,8 +136,25 @@ namespace _08_DavidFerreira_ProjetoFinal
             productPage.refreshProduct(e.Produto);
         }
 
-        private void txtSearch_TextChanged(object sender, EventArgs e)
+        private void ProfileLoad(object? sender, EventArgs e)
         {
+            if (perfilUtilizador != null)
+            {
+                if (customerId != perfilUtilizador.IdCliente) { MessageBox.Show("Test Reset"); perfilUtilizador.resetToDefault(); }
+                perfilUtilizador.Activate();
+            }
+            else
+            {
+                perfilUtilizador = new PerfilUtilizador(customerId);
+                perfilUtilizador.MdiParent = this;
+                perfilUtilizador.Dock = DockStyle.Fill;
+                perfilUtilizador.returnHome += returnToHome;
+                perfilUtilizador.Show();
+            }
+            while (pnlAccountOptions.Size.Width > 0)
+            {
+                pnlAccountOptions.Size = new Size(pnlAccountOptions.Size.Width - 10, pnlAccountOptions.Size.Height);
+            }
 
         }
 
@@ -154,12 +178,10 @@ namespace _08_DavidFerreira_ProjetoFinal
             shoppingAreaForm.Activate();
             if (txtSearch.Text.Trim() == "")
             {
-                shoppingAreaForm.setBtnRefreshVisible(false);
                 shoppingAreaForm.loadShoppingItems(FilterFunctions.noFilter);
             }
             else
             {
-                shoppingAreaForm.setBtnRefreshVisible(true);
                 shoppingAreaForm.loadShoppingItems(FilterFunctions.filterSearch, txtSearch.Text.Trim().ToLower());
             }
             txtSearch.Text = "";

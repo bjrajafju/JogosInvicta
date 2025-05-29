@@ -57,7 +57,7 @@ namespace _08_DavidFerreira_ProjetoFinal
             }
             catch (Exception exc)
             {
-                MessageBox.Show(exc.Message);
+                //MessageBox.Show(exc.Message);
                 return arrayProdutos;
             }
             return arrayProdutos;
@@ -69,7 +69,7 @@ namespace _08_DavidFerreira_ProjetoFinal
             bd.ConnectionString = strProvider;
 
             OleDbCommand cmd = bd.CreateCommand();
-            OleDbDataReader dr;
+            OleDbDataReader? dr;
             List<List<string>> list = new List<List<string>>();
             cmd.CommandText = "SELECT "+colunas+" FROM " + tabela;
 
@@ -101,7 +101,7 @@ namespace _08_DavidFerreira_ProjetoFinal
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
                 return list;
             }
         }
@@ -132,7 +132,6 @@ namespace _08_DavidFerreira_ProjetoFinal
 
             OleDbCommand cmd = bd.CreateCommand();
 
-            List<List<string>> list = new List<List<string>>();
             cmd.CommandText = "INSERT INTO " + tabela+" ";
             if (colunas.Count != 0)
             {
@@ -162,7 +161,7 @@ namespace _08_DavidFerreira_ProjetoFinal
                 }
             }
 
-            MessageBox.Show(cmd.CommandText);
+            //MessageBox.Show(cmd.CommandText);
 
             try
             {
@@ -172,7 +171,52 @@ namespace _08_DavidFerreira_ProjetoFinal
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
+                return GlobalVars.dbError;
+            }
+
+            return GlobalVars.aOk;
+        }
+
+        static public int updateDatabase(string strProvider, string tabela, List<string> colunas, List<string> values)
+        {
+            //First Value is always the Index of the position to Update
+            if ((colunas?.Count != values.Count && colunas?.Count != 0) || values.Count == 0)
+            {
+                return GlobalVars.formatError;
+            }
+
+
+            OleDbConnection bd = new OleDbConnection();
+            bd.ConnectionString = strProvider;
+
+            OleDbCommand cmd = bd.CreateCommand();
+
+            List<List<string>> list = new List<List<string>>();
+            cmd.CommandText = "UPDATE " + tabela + " SET ";
+
+            for(int i = 1; i < colunas.Count; i++)
+            {
+                cmd.CommandText += colunas[i] + " = '" + values[i] +"' ";
+                if (i != colunas.Count - 1)
+                {
+                    cmd.CommandText += ", ";
+                }
+            }
+
+            cmd.CommandText += "WHERE " + colunas[0] + " = " + values[0];
+
+            //MessageBox.Show(cmd.CommandText);
+
+            try
+            {
+                bd.Open();
+                cmd.ExecuteNonQuery();
+                bd.Close();
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.Message);
                 return GlobalVars.dbError;
             }
 

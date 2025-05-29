@@ -36,3 +36,4 @@ C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFin
 C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFinal\obj\Debug\net8.0-windows\_08_DavidFerreira_ProjetoFinal.Login.resources
 C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFinal\obj\Debug\net8.0-windows\_08_DavidFerreira_ProjetoFinal.AccountOptionsLoggedIn.resources
 C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFinal\obj\Debug\net8.0-windows\_08_DavidFerreira_ProjetoFinal.Registar.resources
+C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFinal\obj\Debug\net8.0-windows\_08_DavidFerreira_ProjetoFinal.PerfilUtilizador.resources
