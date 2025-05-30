@@ -61,8 +61,6 @@ namespace _08_DavidFerreira_ProjetoFinal
                 else return "Esgotado";
         }
 
-
-
         public Int32 IdProd
         {
             get
@@ -77,5 +75,19 @@ namespace _08_DavidFerreira_ProjetoFinal
 
         public int IdFranchise { get { return idFranchise; } set { idFranchise = value; }}
 
+        public string getCategoria()
+        {
+            return DataManagement.retrieveStrings(GlobalVars.strProvider, "Categoria", "categoriaProduto", "IdCategoria = " + idCategoria)[0][0];
+        }
+
+        public string getProdutor()
+        {
+            return (DataManagement.retrieveStrings(GlobalVars.strProvider, "Produtor", "nomeProdutor", "IdProdutor = " + idProd))[0][0];
+        }
+
+        public string getFranchise()
+        {
+            return DataManagement.retrieveStrings(GlobalVars.strProvider, "Franchise", "nomeFranchise", "IdFranchise = " + idFranchise)[0][0];
+        }
     }
 }

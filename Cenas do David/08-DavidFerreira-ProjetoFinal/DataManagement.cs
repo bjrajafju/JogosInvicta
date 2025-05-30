@@ -57,7 +57,7 @@ namespace _08_DavidFerreira_ProjetoFinal
             }
             catch (Exception exc)
             {
-                //MessageBox.Show(exc.Message);
+                Console.WriteLine(exc.Message);
                 return arrayProdutos;
             }
             return arrayProdutos;
@@ -101,7 +101,7 @@ namespace _08_DavidFerreira_ProjetoFinal
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message);
+                Console.WriteLine(ex.Message);
                 return list;
             }
         }
@@ -171,7 +171,7 @@ namespace _08_DavidFerreira_ProjetoFinal
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message);
+                Console.WriteLine(ex.Message);
                 return GlobalVars.dbError;
             }
 
@@ -216,7 +216,7 @@ namespace _08_DavidFerreira_ProjetoFinal
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.Message);
+                Console.WriteLine(ex.Message);
                 return GlobalVars.dbError;
             }
 
