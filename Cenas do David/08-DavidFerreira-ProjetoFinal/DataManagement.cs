@@ -12,9 +12,9 @@ namespace _08_DavidFerreira_ProjetoFinal
 {
     static class DataManagement
     {
-        static public Produto[] retrieveProducts(string strProvider)
+        static public List<Produto> retrieveProducts(string strProvider, string where = "")
         {
-            Produto[] arrayProdutos = new Produto[0];
+            List<Produto> arrayProdutos = new List<Produto> ();
 
             OleDbConnection bd = new OleDbConnection();
             bd.ConnectionString = strProvider;
@@ -22,8 +22,8 @@ namespace _08_DavidFerreira_ProjetoFinal
             OleDbCommand cmd = bd.CreateCommand();
             OleDbDataReader dr;
 
-            cmd.CommandText = "SELECT * FROM Produto;";
-
+            cmd.CommandText = "SELECT * FROM Produto";
+            
             try
             {
                 bd.Open();
@@ -32,7 +32,7 @@ namespace _08_DavidFerreira_ProjetoFinal
 
                 while (dr.Read())
                 {
-                    Array.Resize(ref arrayProdutos, arrayProdutos.Length + 1);
+                    
                     Produto currentProduct = new Produto();
 
                     //IdProduto->Nome->IdProdutor->unitPreco->descricao->desconto->stock->Idcat->avaliação->Franchise->Foto
@@ -50,7 +50,7 @@ namespace _08_DavidFerreira_ProjetoFinal
 
                     currentProduct.Foto = Image.FromFile(".\\..\\..\\..\\..\\..\\ProductImages\\" + imagePath);
 
-                    arrayProdutos[arrayProdutos.Length - 1] = currentProduct;
+                    arrayProdutos.Add(currentProduct);
                 }
                 dr.Close();
                 bd.Close();
@@ -65,58 +65,77 @@ namespace _08_DavidFerreira_ProjetoFinal
 
         static public List<List<string>> retrieveStrings(string strProvider, string tabela,string colunas = "*", string? where = null)
         {
-            OleDbConnection bd = new OleDbConnection();
-            bd.ConnectionString = strProvider;
-
-            OleDbCommand cmd = bd.CreateCommand();
-            OleDbDataReader? dr;
             List<List<string>> list = new List<List<string>>();
-            cmd.CommandText = "SELECT "+colunas+" FROM " + tabela;
 
-            if (where != null)
+            using (OleDbConnection bd = new OleDbConnection(strProvider))
+            using (OleDbCommand cmd = bd.CreateCommand())
             {
-                cmd.CommandText += " WHERE " + where;
-            }
-            if (colunas != "*")
-            {
-                cmd.CommandText += " GROUP BY " + colunas;
-            }
-            try
-            {
-                bd.Open();
-                dr = cmd.ExecuteReader();
-                while (dr.Read())
+                cmd.CommandText = "SELECT " + colunas + " FROM " + tabela;
+
+                if (where != null)
                 {
-                    List<string> strings = new List<string>();
-                    for (int i = 0; i < dr.FieldCount; i++) {
-                        strings.Add(dr.GetValue(i).ToString());
-                    }
-                    list.Add(strings);
+                    cmd.CommandText += " WHERE " + where;
                 }
-                
-                dr.Close();
-                bd.Close();
-                
-                return list;
+                if (colunas != "*")
+                {
+                    cmd.CommandText += " ORDER BY " + colunas;
+                }
+
+                try
+                {
+                    bd.Open();
+                    using (OleDbDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            List<string> strings = new List<string>();
+                            for (int i = 0; i < dr.FieldCount; i++)
+                            {
+                                strings.Add(dr.GetValue(i).ToString());
+                            }
+                            list.Add(strings);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return list;
-            }
+            return list;
         }
 
-        static public List<string>? mergeListListString(List<List<string>> list)
+        static public List<string>? retrieveSingleColumn(string strProvider, string tabela, string coluna, string? where = null)
         {
-            if (list == null) return null;
-            if (list[0].Count != 1) return null;
+            List<string> list = new List<string>();
 
-            List<string> strs = new List<string>();
-            for (int i = 0; i < list.Count; i++)
+            using (OleDbConnection bd = new OleDbConnection(strProvider))
+            using (OleDbCommand cmd = bd.CreateCommand())
             {
-                strs.Add(list[i][0]);
+                cmd.CommandText = "SELECT " + coluna + " FROM " + tabela;
+                if (where != null)
+                {
+                    cmd.CommandText += " WHERE " + where;
+                }
+                cmd.CommandText += " ORDER BY " + coluna;
+                try
+                {
+                    bd.Open();
+                    using (OleDbDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            list.Add(dr.GetValue(0).ToString());
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
-            return strs;
+
+            return list;
         }
 
         static public int insertIntoDatabase(string strProvider, string tabela, List<string>? colunas, List<string> values)

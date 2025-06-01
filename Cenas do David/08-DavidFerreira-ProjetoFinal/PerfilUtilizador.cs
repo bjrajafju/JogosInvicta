@@ -41,7 +41,7 @@ namespace _08_DavidFerreira_ProjetoFinal
             txtCodPostal.Text = strs[5];
             txtCidade.Text = strs[6];
             oldPass = strs[8];
-            List<string> strsPaises = DataManagement.mergeListListString(DataManagement.retrieveStrings(GlobalVars.strProvider, "Paises", "Pais"));
+            List<string> strsPaises = DataManagement.retrieveSingleColumn(GlobalVars.strProvider, "Paises", "Pais");
 
             for (int i = 0; i < strsPaises.Count; i++)
             {

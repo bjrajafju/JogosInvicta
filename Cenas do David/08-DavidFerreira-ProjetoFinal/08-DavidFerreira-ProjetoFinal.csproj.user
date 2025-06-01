@@ -10,6 +10,9 @@
     <Compile Update="ButaoCategoria.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="CartItemControlcs.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Menu.cs">
       <SubType>Form</SubType>
     </Compile>

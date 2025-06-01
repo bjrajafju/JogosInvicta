@@ -14,19 +14,19 @@ namespace _08_DavidFerreira_ProjetoFinal
 
     public partial class Menu : Form
     {
-
         private ShoppinArea shoppingAreaForm = null!;
         private ProductPage productPage = null!;
         private Login loginPage = null!;
         private Registar registryPage = null!;
         private PerfilUtilizador perfilUtilizador = null!;
+        private ShoppingCart ShoppingCart = null!;
 
         private int customerId = -1;
         public Menu()
         {
             InitializeComponent();
         }
-        
+
         private void Menu_Load(object sender, EventArgs e)
         {
             AccountOptionsLoggedOut acc = new AccountOptionsLoggedOut();
@@ -35,15 +35,21 @@ namespace _08_DavidFerreira_ProjetoFinal
             pnlAccountOptions.Controls.Add(acc);
             acc.Dock = DockStyle.Top;
 
-            pnlAccountOptions.Size = new Size(0,pnlAccountOptions.Size.Height);
+            pnlAccountOptions.Size = new Size(0, pnlAccountOptions.Size.Height);
             Size = new Size(1250, 750);
             MinimumSize = new Size(1250, 750);
+
+            ShoppingCart = new ShoppingCart();
+            ShoppingCart.MdiParent = this;
+            ShoppingCart.Dock = DockStyle.Fill;
+            ShoppingCart.Show();
 
             shoppingAreaForm = new ShoppinArea();
             shoppingAreaForm.OnProductSelectedChangePage += detailedItemLoad;
             shoppingAreaForm.MdiParent = this;
             shoppingAreaForm.Dock = DockStyle.Fill;
             shoppingAreaForm.Show();
+
         }
 
 
@@ -63,13 +69,14 @@ namespace _08_DavidFerreira_ProjetoFinal
             if (loginPage != null)
             {
                 loginPage.Activate();
-            } else
+            }
+            else
             {
                 loginPage = new Login();
                 loginPage.MdiParent = this;
                 loginPage.Dock = DockStyle.Fill;
                 loginPage.onSucessfulLogin += accountLoggedIn;
-                
+
             }
             while (pnlAccountOptions.Size.Width > 0)
             {
@@ -81,7 +88,7 @@ namespace _08_DavidFerreira_ProjetoFinal
         private void Logout(object? sender, EventArgs e)
         {
             pnlAccountOptions.Controls.Clear();
-            pnlAccountOptions.Size = new Size(0,pnlAccountOptions.Size.Height);
+            pnlAccountOptions.Size = new Size(0, pnlAccountOptions.Size.Height);
             AccountOptionsLoggedOut acc = new AccountOptionsLoggedOut();
             acc.LoginClicked += LoginLoad;
             acc.RegisterClicked += RegisterLoad;
@@ -92,7 +99,7 @@ namespace _08_DavidFerreira_ProjetoFinal
 
         private void returnToHome(object? sender, EventArgs e)
         {
-            if(shoppingAreaForm != null) { shoppingAreaForm.Activate(); }
+            if (shoppingAreaForm != null) { shoppingAreaForm.Activate(); }
         }
 
 
@@ -126,6 +133,7 @@ namespace _08_DavidFerreira_ProjetoFinal
                 productPage = new ProductPage();
                 productPage.MdiParent = this;
                 productPage.Dock = DockStyle.Fill;
+                productPage.OnAddToCart += AddShoppingCart;
                 productPage.Show();
             }
             else
@@ -135,6 +143,29 @@ namespace _08_DavidFerreira_ProjetoFinal
 
             productPage.refreshProduct(e.Produto);
         }
+
+
+        public void AddShoppingCart(object sender, LinhaEventArgs l)
+        {
+            if(customerId == -1)
+            {
+                if(MessageBox.Show("Não está logged in para aceder ao seu carrinho. Gostaria de dar login?","Atenção", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    LoginLoad(this, EventArgs.Empty);
+                }
+                return;
+            }
+            ShoppingCart.AddCartLine(l.Line);
+
+            if (MessageBox.Show("Adicionado ao carrinho com sucesso! Pretende ver o seu carrinho?", "Sucesso!", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                ShoppingCart.Activate();
+            } else
+            {
+                shoppingAreaForm.Activate();
+            }
+        }
+
 
         private void ProfileLoad(object? sender, EventArgs e)
         {
@@ -189,19 +220,25 @@ namespace _08_DavidFerreira_ProjetoFinal
 
         private void btnAccount_Click(object sender, EventArgs e)
         {
-            if(pnlAccountOptions.Size.Width == 0)
+            if (pnlAccountOptions.Size.Width == 0)
             {
-                while(pnlAccountOptions.Size.Width < 80)
+                while (pnlAccountOptions.Size.Width < 80)
                 {
-                    pnlAccountOptions.Size = new Size(pnlAccountOptions.Size.Width+10,pnlAccountOptions.Size.Height);
+                    pnlAccountOptions.Size = new Size(pnlAccountOptions.Size.Width + 10, pnlAccountOptions.Size.Height);
                 }
-            } else
+            }
+            else
             {
                 while (pnlAccountOptions.Size.Width > 0)
                 {
                     pnlAccountOptions.Size = new Size(pnlAccountOptions.Size.Width - 10, pnlAccountOptions.Size.Height);
                 }
             }
+        }
+
+        private void btnCart_Click(object? sender, EventArgs e)
+        {
+            if(ShoppingCart != null) ShoppingCart.Activate();
         }
     }
 }

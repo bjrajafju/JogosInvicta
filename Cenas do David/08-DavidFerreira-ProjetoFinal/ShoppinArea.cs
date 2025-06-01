@@ -18,16 +18,17 @@ namespace _08_DavidFerreira_ProjetoFinal
 
         public List<ButaoCategoria> butaoCategoriasTotais = new List<ButaoCategoria>();
 
-        public Produto[]? produtosTotais;
-
-        public List<string>? categoriasTotais = null;
-        public List<string>? produtorTotais = null;
-        public List<string>? franchiseTotais = null;
+        public List<Produto>? produtosTotais;
 
         public List<ShopItemControl>? itemsTotais = null;
         public ShoppinArea()
         {
             InitializeComponent();
+            this.DoubleBuffered = true;
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint |
+                          ControlStyles.UserPaint |
+                          ControlStyles.OptimizedDoubleBuffer, true);
+            this.UpdateStyles();
         }
 
         public void sendEventToMenu(object sender, ProdutoEventArgs e)
@@ -38,14 +39,15 @@ namespace _08_DavidFerreira_ProjetoFinal
         private void ShoppinArea_Load(object sender, EventArgs e)
         {
             produtosTotais = DataManagement.retrieveProducts(GlobalVars.strProvider);
-            produtorTotais = DataManagement.mergeListListString(DataManagement.retrieveStrings(GlobalVars.strProvider, "Produtor","nomeProdutor"));
-            franchiseTotais = DataManagement.mergeListListString(DataManagement.retrieveStrings(GlobalVars.strProvider, "Franchise", "NomeFranchise"));
-            categoriasTotais = DataManagement.mergeListListString(DataManagement.retrieveStrings(GlobalVars.strProvider, "Categoria", "categoriaProduto"));
-
+            List<string>? produtorTotais = DataManagement.retrieveSingleColumn(GlobalVars.strProvider, "Produtor","nomeProdutor");
+            List<string>? franchiseTotais = DataManagement.retrieveSingleColumn(GlobalVars.strProvider, "Franchise", "NomeFranchise");
+            List<string>? categoriasTotais = DataManagement.retrieveSingleColumn(GlobalVars.strProvider, "Categoria", "categoriaProduto");
+            
             for (int i = 0; i < produtorTotais?.Count; i++)
             {
                 cboProdutores.Items.Add(produtorTotais[i]);
             }
+            
             for (int i = 0; i < franchiseTotais?.Count; i++)
             {
                 cboFranchise.Items.Add(franchiseTotais[i]);
@@ -59,7 +61,7 @@ namespace _08_DavidFerreira_ProjetoFinal
                 butaoCategoriasTotais[i].Show();
             }
 
-            if (produtosTotais != null)
+            if (produtosTotais?.Count > 0)
             {
                 loadShoppingItems(FilterFunctions.noFilter);
 
@@ -68,6 +70,7 @@ namespace _08_DavidFerreira_ProjetoFinal
 
                 resetCboIndexes();
             }
+            GC.Collect();
         }
 
         public void recievedCategory(object sender, StringEventArgs e)
@@ -88,11 +91,11 @@ namespace _08_DavidFerreira_ProjetoFinal
         }
         public void loadShoppingItems(Func<Produto, string, bool> filtro, string restriction = "")
         {
-            if (restriction == "" && itemsTotais?.Count == produtosTotais?.Length)
+            if (restriction == "" && itemsTotais?.Count == produtosTotais?.Count)
             {
                 return;
             }
-            fpnlShopItems.Visible = false;
+            fpnlShopItems.SuspendLayout();
             if (itemsTotais != null)
             {
                 fpnlShopItems.Controls.Clear();
@@ -104,9 +107,8 @@ namespace _08_DavidFerreira_ProjetoFinal
             }
             itemsTotais = new List<ShopItemControl>();
             int idxTotItems = 0;
-            for (int i = 0; i < produtosTotais?.Length; i++)
+            for (int i = 0; i < produtosTotais?.Count; i++)
             {
-                
                 if (filtro(produtosTotais[i], restriction))
                 {
                     itemsTotais.Add(new ShopItemControl(produtosTotais[i]));
@@ -130,7 +132,7 @@ namespace _08_DavidFerreira_ProjetoFinal
                 lbl.Show();
 
             }
-            fpnlShopItems.Visible = true;
+            fpnlShopItems.ResumeLayout();
             return;
         }
 
@@ -146,7 +148,7 @@ namespace _08_DavidFerreira_ProjetoFinal
             }
             else
             {
-                loadShoppingItems(FilterFunctions.filterFranchise, cboFranchise.SelectedItem.ToString());
+                if(cboFranchise.SelectedItem !=null) loadShoppingItems(FilterFunctions.filterFranchise, cboFranchise.SelectedItem.ToString());
             }
             //reset other stuff index
         }

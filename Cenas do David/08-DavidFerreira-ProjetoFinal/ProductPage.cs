@@ -15,6 +15,10 @@ namespace _08_DavidFerreira_ProjetoFinal
     {
         private Produto? currentProduct;
 
+        public delegate void AddedToCart(object sender, LinhaEventArgs args);
+        public event AddedToCart? OnAddToCart;
+
+
         public ProductPage()
         {
             InitializeComponent();
@@ -46,7 +50,6 @@ namespace _08_DavidFerreira_ProjetoFinal
             {
                 nupQuant.Enabled = false;
             }
-
 
             txtMainInfo.Text = currentProduct.NomeProduto;
             txtMainInfo.SelectAll();
@@ -94,6 +97,7 @@ namespace _08_DavidFerreira_ProjetoFinal
                     txtMainInfo.Select(0, 0);
                 }
             }
+
             txtMainInfo.AppendText("\n");
 
             txtMainInfo.AppendText("Disponibilidade: " + currentProduct.StockStatus());
@@ -119,7 +123,8 @@ namespace _08_DavidFerreira_ProjetoFinal
                 }
                 txtMainInfo.Select(0, 0);
             }
-
+            txtMainInfo.AppendText("\n");
+            txtMainInfo.AppendText("Avaliação: " +currentProduct.AvalProd.ToString() + "/10🌟");
 
             txtDesciption.Text = currentProduct.Descricao;
 
@@ -129,8 +134,7 @@ namespace _08_DavidFerreira_ProjetoFinal
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Adicionado com Sucesso ao Carrinho! Se este estivesse pronto, that is");
-            nupQuant.Value = 0;
+            OnAddToCart?.Invoke(sender, new LinhaEventArgs(new LinhasDoCarrinho(currentProduct, (int)nupQuant.Value)));
 
             //NÃO ESQUECER DE VERIFICAR DA PRÓXIMA VEZ SE JÁ INTRODUZIU ESTE ITEM
         }
@@ -138,11 +142,10 @@ namespace _08_DavidFerreira_ProjetoFinal
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             //MIGHT CHANGE THIS TBH
-            if(nupQuant.Value > currentProduct.Stock)
+            if(nupQuant.Value == 0)
             {
-                MessageBox.Show("Excedeu o Stock Disponível.");
-                nupQuant.Value = currentProduct.Stock;
-            }
+                 btnAddToCart.Enabled = false;
+            } else { btnAddToCart.Enabled = true; }
         }
     }
 }

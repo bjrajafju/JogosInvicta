@@ -131,7 +131,7 @@ namespace _08_DavidFerreira_ProjetoFinal
 
         private void Registar_Load(object sender, EventArgs e)
         {
-            List<string>? list = DataManagement.mergeListListString(DataManagement.retrieveStrings(GlobalVars.strProvider, "Paises", "Pais"));
+            List<string>? list = DataManagement.retrieveSingleColumn(GlobalVars.strProvider, "Paises", "Pais");
             for (int i = 0; i < list?.Count; i++)
             {
                 cboPaíses.Items.Add(list[i]);

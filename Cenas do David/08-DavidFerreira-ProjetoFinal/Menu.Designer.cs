@@ -124,6 +124,7 @@
             btnCart.Size = new Size(93, 112);
             btnCart.TabIndex = 5;
             btnCart.UseVisualStyleBackColor = false;
+            btnCart.Click += btnCart_Click;
             // 
             // btnAccount
             // 

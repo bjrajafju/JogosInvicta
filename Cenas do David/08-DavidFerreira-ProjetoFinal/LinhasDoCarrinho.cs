@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace _08_DavidFerreira_ProjetoFinal
 {
-    internal class LinhasDoCarrinho
+    public class LinhasDoCarrinho
     {
-        Produto? product;
-        int? quantidade;
+        Produto product;
+        int quantidade;
 
-        public LinhasDoCarrinho() { }
+        public LinhasDoCarrinho(Produto p, int q=0) { product = p;quantidade = q; }
 
-        public Produto? Product { get { return product; } set { product = value; } }
+        public Produto Product { get { return product; } set { product = value; } }
 
-        public int? Quantidade { get { return quantidade; } set { quantidade = value; } }
+        public int Quantidade { get { return quantidade; } set { quantidade = value; } }
     }
 }
