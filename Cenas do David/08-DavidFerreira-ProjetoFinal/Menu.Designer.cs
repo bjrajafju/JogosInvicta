@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             pnlHeader = new Panel();
             panel3 = new Panel();
             txtSearch = new TextBox();
@@ -196,6 +197,7 @@
             Controls.Add(pnlAccountOptions);
             Controls.Add(panel1);
             Controls.Add(pnlHeader);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             IsMdiContainer = true;
             MinimumSize = new Size(1702, 1006);
             Name = "Menu";

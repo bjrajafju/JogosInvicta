@@ -38,3 +38,8 @@ C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFin
 C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFinal\obj\Debug\net8.0-windows\_08_DavidFerreira_ProjetoFinal.Registar.resources
 C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFinal\obj\Debug\net8.0-windows\_08_DavidFerreira_ProjetoFinal.PerfilUtilizador.resources
 C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFinal\obj\Debug\net8.0-windows\_08_DavidFerreira_ProjetoFinal.CartItemControlcs.resources
+C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFinal\obj\Debug\net8.0-windows\_08_DavidFerreira_ProjetoFinal.ProgressBarForm.resources
+C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFinal\obj\Debug\net8.0-windows\_08_DavidFerreira_ProjetoFinal.MinhasCompras.resources
+C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFinal\obj\Debug\net8.0-windows\_08_DavidFerreira_ProjetoFinal.CompraItem.resources
+C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFinal\obj\Debug\net8.0-windows\_08_DavidFerreira_ProjetoFinal.ComprasPrevias.resources
+C:\Users\matia\Documents\JogosInvicta\Cenas do David\08-DavidFerreira-ProjetoFinal\obj\Debug\net8.0-windows\_08_DavidFerreira_ProjetoFinal.CompraSubItem.resources

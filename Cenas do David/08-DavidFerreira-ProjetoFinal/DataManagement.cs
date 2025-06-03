@@ -12,64 +12,13 @@ namespace _08_DavidFerreira_ProjetoFinal
 {
     static class DataManagement
     {
-        static public List<Produto> retrieveProducts(string strProvider, string where = "")
-        {
-            List<Produto> arrayProdutos = new List<Produto> ();
-
-            OleDbConnection bd = new OleDbConnection();
-            bd.ConnectionString = strProvider;
-
-            OleDbCommand cmd = bd.CreateCommand();
-            OleDbDataReader dr;
-
-            cmd.CommandText = "SELECT * FROM Produto";
-            
-            try
-            {
-                bd.Open();
-
-                dr = cmd.ExecuteReader();
-
-                while (dr.Read())
-                {
-                    
-                    Produto currentProduct = new Produto();
-
-                    //IdProduto->Nome->IdProdutor->unitPreco->descricao->desconto->stock->Idcat->avaliação->Franchise->Foto
-
-                    currentProduct.NomeProduto = dr.GetString(1);
-                    currentProduct.IdProd = dr.GetInt32(2);
-                    currentProduct.PrecoUnit = dr.GetDouble(3);
-                    currentProduct.Descricao = dr.GetString(4);
-                    currentProduct.Desconto = dr.GetDouble(5);
-                    currentProduct.Stock = dr.GetInt16(6);
-                    currentProduct.IdCategoria = dr.GetInt16(7);
-                    currentProduct.AvalProd = dr.GetByte(8);
-                    currentProduct.IdFranchise = dr.GetInt32(9);
-                    string? imagePath = dr.GetValue(10).ToString();
-
-                    currentProduct.Foto = Image.FromFile(".\\..\\..\\..\\..\\..\\ProductImages\\" + imagePath);
-
-                    arrayProdutos.Add(currentProduct);
-                }
-                dr.Close();
-                bd.Close();
-            }
-            catch (Exception exc)
-            {
-                Console.WriteLine(exc.Message);
-                return arrayProdutos;
-            }
-            return arrayProdutos;
-        }
-
+       
         static public List<List<string>> retrieveStrings(string strProvider, string tabela,string colunas = "*", string? where = null)
         {
             List<List<string>> list = new List<List<string>>();
 
-            using (OleDbConnection bd = new OleDbConnection(strProvider))
-            using (OleDbCommand cmd = bd.CreateCommand())
-            {
+            OleDbConnection bd = new OleDbConnection(strProvider);
+            OleDbCommand cmd = bd.CreateCommand();
                 cmd.CommandText = "SELECT " + colunas + " FROM " + tabela;
 
                 if (where != null)
@@ -84,24 +33,23 @@ namespace _08_DavidFerreira_ProjetoFinal
                 try
                 {
                     bd.Open();
-                    using (OleDbDataReader dr = cmd.ExecuteReader())
+                    OleDbDataReader dr = cmd.ExecuteReader();   
+                    while (dr.Read())
                     {
-                        while (dr.Read())
+                        List<string> strings = new List<string>();
+                        for (int i = 0; i < dr.FieldCount; i++)
                         {
-                            List<string> strings = new List<string>();
-                            for (int i = 0; i < dr.FieldCount; i++)
-                            {
-                                strings.Add(dr.GetValue(i).ToString());
-                            }
-                            list.Add(strings);
+                            strings.Add(dr.GetValue(i).ToString());
                         }
+                        list.Add(strings);
                     }
+                    dr.Close();
+                    bd.Close();
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
                 }
-            }
             return list;
         }
 
@@ -109,9 +57,8 @@ namespace _08_DavidFerreira_ProjetoFinal
         {
             List<string> list = new List<string>();
 
-            using (OleDbConnection bd = new OleDbConnection(strProvider))
-            using (OleDbCommand cmd = bd.CreateCommand())
-            {
+            OleDbConnection bd = new OleDbConnection(strProvider);
+            OleDbCommand cmd = bd.CreateCommand();
                 cmd.CommandText = "SELECT " + coluna + " FROM " + tabela;
                 if (where != null)
                 {
@@ -121,19 +68,20 @@ namespace _08_DavidFerreira_ProjetoFinal
                 try
                 {
                     bd.Open();
-                    using (OleDbDataReader dr = cmd.ExecuteReader())
+                    OleDbDataReader dr = cmd.ExecuteReader();
+            
+                    while (dr.Read())
                     {
-                        while (dr.Read())
-                        {
-                            list.Add(dr.GetValue(0).ToString());
-                        }
+                        list.Add(dr.GetValue(0).ToString());
                     }
+                    dr.Close();
+                    bd.Close();
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
                 }
-            }
+            
 
             return list;
         }
@@ -170,11 +118,20 @@ namespace _08_DavidFerreira_ProjetoFinal
             cmd.CommandText += "VALUES(";
             for(int i=0; i < values.Count; i++)
             {
-                cmd.CommandText+=("'"+values[i].ToString()+"'");
-                if(i == values.Count - 1)
+                if (values[i][0] != '#')
+                {
+                    cmd.CommandText += ("'" + values[i].ToString() + "'");
+                   
+                } else
+                {
+                    cmd.CommandText += values[i].ToString();
+                }
+
+                if (i == values.Count - 1)
                 {
                     cmd.CommandText += ")";
-                } else
+                }
+                else
                 {
                     cmd.CommandText += ',';
                 }
@@ -240,6 +197,56 @@ namespace _08_DavidFerreira_ProjetoFinal
             }
 
             return GlobalVars.aOk;
+        }
+
+        static public int removeFromDatabase(string strProvider, string tabela, string where)
+        {
+            //First Value is always the Index of the position to Update
+
+            OleDbConnection bd = new OleDbConnection();
+            bd.ConnectionString = strProvider;
+
+            OleDbCommand cmd = bd.CreateCommand();
+
+            List<List<string>> list = new List<List<string>>();
+            cmd.CommandText = "DELETE FROM " + tabela ;
+
+            cmd.CommandText += " WHERE " + where;
+
+            //MessageBox.Show(cmd.CommandText);
+
+            try
+            {
+                bd.Open();
+                cmd.ExecuteNonQuery();
+                bd.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return GlobalVars.dbError;
+            }
+
+            return GlobalVars.aOk;
+        }
+
+        static public int RowsCount(string strProvider, string tabela)
+        {
+            OleDbConnection bd = new OleDbConnection(strProvider);
+            OleDbCommand cmd = bd.CreateCommand();
+            cmd.CommandText = "SELECT Count(*) FROM " + tabela;
+            try
+            {
+                bd.Open();
+                OleDbDataReader dr = cmd.ExecuteReader();
+                dr.Read();
+                return dr.GetInt32(0);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return -400;
+            }
         }
     }
 }

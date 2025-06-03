@@ -12,27 +12,40 @@ namespace _08_DavidFerreira_ProjetoFinal
 {
     public partial class ShoppingCart : Form
     {
+        public delegate void ChangeProductPage(object sender, ProdutoEventArgs e);
+
+        public event ChangeProductPage? ChangeProductPageRequest;
+
         private List<LinhasDoCarrinho> lines = new List<LinhasDoCarrinho>();
         private Dictionary<string, CartItemControlcs> cartItemControlcs = new Dictionary<string, CartItemControlcs>();
+        public event EventHandler finaliseCart;
+        public event EventHandler returnHome;
+
         public ShoppingCart()
         {
             InitializeComponent();
             ResetShoppingCart();
         }
 
+        public ref List<LinhasDoCarrinho> Linhas
+        {
+            get { return ref lines; }
+        }
+
         private void ResetShoppingCart()
         {
             lines.Clear();
             pnlCartItems.Controls.Clear();
-            foreach(var cart in cartItemControlcs)
+            foreach (var cart in cartItemControlcs)
             {
                 cartItemControlcs[cart.Key].Dispose();
             }
             cartItemControlcs.Clear();
-            
+
             pnlSkibidi.Visible = false;
             btnFinalise.Visible = false;
             lblTotalPrice.Text = "0€";
+            returnHome?.Invoke(this, EventArgs.Empty);
         }
 
         public void AddCartLine(LinhasDoCarrinho l)
@@ -43,6 +56,7 @@ namespace _08_DavidFerreira_ProjetoFinal
                 {
                     line.Quantidade += l.Quantidade;
                     cartItemControlcs[l.Product.NomeProduto].updateQuantity((int)line.Quantidade);
+
                     UpdateTotalPrice();
                     return;
                 }
@@ -51,10 +65,11 @@ namespace _08_DavidFerreira_ProjetoFinal
             cartItemControlcs[l.Product.NomeProduto] = new CartItemControlcs(l);
             cartItemControlcs[l.Product.NomeProduto].DeleteProduct += DeleteProduct;
             cartItemControlcs[l.Product.NomeProduto].ChangeProductCount += ChangeProductCount;
+            cartItemControlcs[l.Product.NomeProduto].ChangeProductPageRequest += SendProductPageRequest;
             pnlCartItems.Controls.Add(cartItemControlcs[l.Product.NomeProduto]);
             cartItemControlcs[l.Product.NomeProduto].Dock = DockStyle.Top;
             UpdateTotalPrice();
-            pnlSkibidi.Visible=true;
+            pnlSkibidi.Visible = true;
             btnFinalise.Visible = true;
         }
 
@@ -87,7 +102,7 @@ namespace _08_DavidFerreira_ProjetoFinal
                 {
                     ResetShoppingCart();
                 }
-            } 
+            }
         }
 
         private void UpdateTotalPrice()
@@ -98,7 +113,26 @@ namespace _08_DavidFerreira_ProjetoFinal
             {
                 totPrice += ((lines[i].Product.PrecoUnit - lines[i].Product.PrecoUnit * lines[i].Product.Desconto) * lines[i].Quantidade);
             }
-            lblTotalPrice.Text = (Math.Round(totPrice,2)).ToString() + "€";
+            lblTotalPrice.Text = (Math.Round(totPrice, 2)).ToString() + "€";
+        }
+
+        private void btnFinalise_Click(object sender, EventArgs e)
+        {
+
+            //ACEDER IG
+            finaliseCart.Invoke(sender, EventArgs.Empty);
+
+            ProgressBarForm frm = new ProgressBarForm();
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                ResetShoppingCart();
+                returnHome?.Invoke(sender, EventArgs.Empty);
+            }
+        }
+
+        private void SendProductPageRequest(object sender, ProdutoEventArgs args)
+        {
+            ChangeProductPageRequest?.Invoke(sender, args);
         }
     }
 }

@@ -45,18 +45,19 @@ namespace _08_DavidFerreira_ProjetoFinal
             txtInfo.Text = "";
             txtMainInfo.Text = "";
             pictureBox1.Image = currentProduct?.Foto;
+            tabControl1.SelectedIndex = 0;
 
-            if(currentProduct.StockStatus() == "Esgotado")
+            if(currentProduct?.StockStatus() == "Esgotado")
             {
                 nupQuant.Enabled = false;
             }
 
-            txtMainInfo.Text = currentProduct.NomeProduto;
+            txtMainInfo.Text = currentProduct?.NomeProduto;
             txtMainInfo.SelectAll();
             txtMainInfo.SelectionFont = new Font(txtMainInfo.Font.FontFamily, 14, FontStyle.Bold);
             txtMainInfo.Select(0, 0);
             txtMainInfo.AppendText("\n");
-            if (currentProduct.Desconto > 0)
+            if (currentProduct?.Desconto > 0)
             {
                 string oldPrice = "Preço Invicta: " + currentProduct.PrecoUnit + "€";
 
@@ -85,7 +86,7 @@ namespace _08_DavidFerreira_ProjetoFinal
             }
             else
             {
-                string price = "Preço Invicta: " + currentProduct.PrecoUnit + "€";
+                string price = "Preço Invicta: " + currentProduct?.PrecoUnit + "€";
 
                 txtMainInfo.AppendText(price);
                 int start = txtMainInfo.Text.IndexOf(price);
@@ -100,8 +101,8 @@ namespace _08_DavidFerreira_ProjetoFinal
 
             txtMainInfo.AppendText("\n");
 
-            txtMainInfo.AppendText("Disponibilidade: " + currentProduct.StockStatus());
-            int stckStart = txtMainInfo.Text.IndexOf(currentProduct.StockStatus());
+            txtMainInfo.AppendText("Disponibilidade: " + currentProduct?.StockStatus());
+            int stckStart = txtMainInfo.Text.IndexOf(currentProduct?.StockStatus());
             if (stckStart >= 0)
             {
                 txtMainInfo.Select(stckStart, currentProduct.StockStatus().Length);
@@ -128,8 +129,8 @@ namespace _08_DavidFerreira_ProjetoFinal
 
             txtDesciption.Text = currentProduct.Descricao;
 
-            txtInfo.AppendText("Produtor: "+(DataManagement.retrieveStrings(GlobalVars.strProvider, "Produtor", "nomeProdutor", "IdProdutor = " + currentProduct.IdProd))[0][0].ToString() + '\n');
-            txtInfo.AppendText("Categoria: " + (DataManagement.retrieveStrings(GlobalVars.strProvider, "Categoria", "categoriaProduto", "IdCategoria = " + currentProduct.IdCategoria))[0][0].ToString());
+            txtInfo.AppendText("Produtor: "+currentProduct.Produtor.NomeProd +'\n');
+            txtInfo.AppendText("Categoria: " + currentProduct.Categoria.NomeCat);
         }
 
         private void button1_Click(object sender, EventArgs e)

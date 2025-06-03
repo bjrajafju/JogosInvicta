@@ -20,11 +20,14 @@ namespace _08_DavidFerreira_ProjetoFinal
         private Registar registryPage = null!;
         private PerfilUtilizador perfilUtilizador = null!;
         private ShoppingCart ShoppingCart = null!;
+        private ComprasPrevias ComprasPrevias = null!;
 
-        private int customerId = -1;
+        private Cliente Customer = null!;
         public Menu()
         {
+            GlobalVars.QuantidadeCompras = DataManagement.RowsCount(GlobalVars.strProvider, "Compra");
             InitializeComponent();
+            this.FormClosing += MenuClose;
         }
 
         private void Menu_Load(object sender, EventArgs e)
@@ -43,25 +46,99 @@ namespace _08_DavidFerreira_ProjetoFinal
             ShoppingCart.MdiParent = this;
             ShoppingCart.Dock = DockStyle.Fill;
             ShoppingCart.Show();
+            ShoppingCart.ChangeProductPageRequest += detailedItemLoad;
+            ShoppingCart.returnHome += returnToHome;
+            ShoppingCart.finaliseCart += FinalizarCompra;
 
             shoppingAreaForm = new ShoppinArea();
             shoppingAreaForm.OnProductSelectedChangePage += detailedItemLoad;
             shoppingAreaForm.MdiParent = this;
             shoppingAreaForm.Dock = DockStyle.Fill;
             shoppingAreaForm.Show();
-
         }
 
+        private void MenuClose(object? sender, EventArgs args)
+        {
+            
+            List<LinhasDoCarrinho> Lines = ShoppingCart.Linhas;
+            if (Lines.Count > 0)
+            {
+                if (MessageBox.Show("Pretende guardar o seu carrinho para aceder de novo quando voltar? \nATENÇÃO: O SEU CARRINHO SERÁ IRRECUPERÁVEL", "Atenção!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    List<string> cols = new List<string>();
+                    cols.Add("IdCliente");
+                    cols.Add("IdProduto");
+                    cols.Add("Quantidade");
+                    for (int i = 0; i < Lines.Count; i++)
+                    {
+                        List<string> vals = new List<string>();
+                        vals.Add(Customer.Id.ToString());
+                        vals.Add(Lines[i].Product.Id.ToString());
+                        vals.Add(Lines[i].Quantidade.ToString());
+                        DataManagement.insertIntoDatabase(GlobalVars.strProvider, "LinhasCarrinho", cols, vals);
+                    }
+                }
+            }
+        }
+
+        private void FinalizarCompra(object? sender, EventArgs args)
+        {
+            { 
+                List<string> cols1 = new List<string>();
+                cols1.Add("IdCompra");
+                cols1.Add("Data");
+                cols1.Add("IdEstado");
+                cols1.Add("IdCliente");
+
+                List<string> values = new List<string>();
+                values.Add((++GlobalVars.QuantidadeCompras).ToString());
+                values.Add("#" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss") + "#");
+                values.Add("3");
+                values.Add(Customer.Id.ToString());
+
+                int n = DataManagement.insertIntoDatabase(GlobalVars.strProvider, "Compra", cols1, values);
+                if (n != GlobalVars.aOk) MessageBox.Show(n.ToString());
+            }
+            List<string> cols = new List<string>();
+            cols.Add("IdCompra");
+            cols.Add("IdProduto");
+            cols.Add("Quantidade");
+
+            for (int i = 0; i < ShoppingCart.Linhas.Count; i++)
+            {
+                List<string> values = new List<string>();
+                values.Add((GlobalVars.QuantidadeCompras).ToString());
+                values.Add(ShoppingCart.Linhas[i].Product.Id.ToString());
+                values.Add(ShoppingCart.Linhas[i].Quantidade.ToString());
+                int n = DataManagement.insertIntoDatabase(GlobalVars.strProvider, "CompraProduto", cols, values);
+
+                if(n!=GlobalVars.aOk) MessageBox.Show(n.ToString());
+            }
+            ComprasPrevias = null;
+        }
 
         public void accountLoggedIn(object sender, StringEventArgs e)
         {
-            customerId = Convert.ToInt32(e.Str);
+            Customer = DataProcessing.retrieveSingleClient(Convert.ToInt32(e.Str));
             pnlAccountOptions.Controls.Clear();
             shoppingAreaForm.Activate();
             AccountOptionsLoggedIn acc = new AccountOptionsLoggedIn();
             acc.logout += Logout;
             acc.perfilAccess += ProfileLoad;
+            acc.comprasPrevias += ComprasPreviasLoad;
             pnlAccountOptions.Controls.Add(acc);
+
+            List<LinhasDoCarrinho> lines = DataProcessing.retrieveShoppingLines(Customer.Id);
+
+            for (int i = 0; i < lines.Count; i++)
+            {
+                ShoppingCart.AddCartLine(lines[i]);
+            }
+            int n = DataManagement.removeFromDatabase(GlobalVars.strProvider, "LinhasCarrinho", "IdCliente=" + Customer.Id);
+            if ( n!= GlobalVars.aOk)
+            {
+                MessageBox.Show(n.ToString());
+            }
         }
 
         private void LoginLoad(object? sender, EventArgs e)
@@ -95,11 +172,14 @@ namespace _08_DavidFerreira_ProjetoFinal
             pnlAccountOptions.Controls.Add(acc);
             acc.Dock = DockStyle.Top;
             shoppingAreaForm.Activate();
+            perfilUtilizador = null;
+            ComprasPrevias = null;
+            GC.Collect();   
         }
 
         private void returnToHome(object? sender, EventArgs e)
         {
-            if (shoppingAreaForm != null) { shoppingAreaForm.Activate(); }
+            if (shoppingAreaForm != null) { shoppingAreaForm.Activate(); shoppingAreaForm.loadShoppingItems(FilterFunctions.noFilter); shoppingAreaForm.resetCboIndexes(); }
         }
 
 
@@ -117,12 +197,12 @@ namespace _08_DavidFerreira_ProjetoFinal
                 registryPage.onSucessfulRegistry += LoginLoad;
                 registryPage.onCanceledRegistry += returnToHome;
                 registryPage.Dock = DockStyle.Fill;
-                registryPage.Show();
             }
             while (pnlAccountOptions.Size.Width > 0)
             {
                 pnlAccountOptions.Size = new Size(pnlAccountOptions.Size.Width - 10, pnlAccountOptions.Size.Height);
             }
+            registryPage.Show();
 
         }
 
@@ -147,7 +227,7 @@ namespace _08_DavidFerreira_ProjetoFinal
 
         public void AddShoppingCart(object sender, LinhaEventArgs l)
         {
-            if(customerId == -1)
+            if(Customer == null)
             {
                 if(MessageBox.Show("Não está logged in para aceder ao seu carrinho. Gostaria de dar login?","Atenção", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
@@ -171,36 +251,49 @@ namespace _08_DavidFerreira_ProjetoFinal
         {
             if (perfilUtilizador != null)
             {
-                if (customerId != perfilUtilizador.IdCliente) { MessageBox.Show("Test Reset"); perfilUtilizador.resetToDefault(); }
                 perfilUtilizador.Activate();
             }
             else
             {
-                perfilUtilizador = new PerfilUtilizador(customerId);
+                perfilUtilizador = new PerfilUtilizador(Customer);
                 perfilUtilizador.MdiParent = this;
                 perfilUtilizador.Dock = DockStyle.Fill;
                 perfilUtilizador.returnHome += returnToHome;
-                perfilUtilizador.Show();
             }
             while (pnlAccountOptions.Size.Width > 0)
             {
                 pnlAccountOptions.Size = new Size(pnlAccountOptions.Size.Width - 10, pnlAccountOptions.Size.Height);
             }
+            perfilUtilizador.Show();
+        }
 
+        private void ComprasPreviasLoad(object sender, EventArgs e)
+        {
+            if (ComprasPrevias != null)
+            {
+                ComprasPrevias.Activate();
+            }
+            else
+            {
+                ComprasPrevias = new ComprasPrevias(DataProcessing.retrieveCompras(Customer));
+                ComprasPrevias.MdiParent = this;
+                ComprasPrevias.Dock = DockStyle.Fill;
+                ComprasPrevias.Show();
+            }
+            while (pnlAccountOptions.Size.Width > 0)
+            {
+                pnlAccountOptions.Size = new Size(pnlAccountOptions.Size.Width - 10, pnlAccountOptions.Size.Height);
+            }
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            shoppingAreaForm.resetCboIndexes();
-            shoppingAreaForm.Activate();
-            shoppingAreaForm.loadShoppingItems(FilterFunctions.noFilter);
+            returnToHome(sender, e);
         }
 
         private void lblAppName_Click(object sender, EventArgs e)
         {
-            shoppingAreaForm.resetCboIndexes();
-            shoppingAreaForm.Activate();
-            shoppingAreaForm.loadShoppingItems(FilterFunctions.noFilter);
+            returnToHome(sender, e);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)

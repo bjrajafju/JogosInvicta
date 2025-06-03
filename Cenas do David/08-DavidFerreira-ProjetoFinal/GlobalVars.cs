@@ -21,5 +21,7 @@ namespace _08_DavidFerreira_ProjetoFinal
         static public Color limitedStockColor = Color.Yellow;
 
         static public Color preOrder = Color.AliceBlue;
+
+        static public int QuantidadeCompras = DataManagement.RowsCount(strProvider, "Compra");
     }
 }

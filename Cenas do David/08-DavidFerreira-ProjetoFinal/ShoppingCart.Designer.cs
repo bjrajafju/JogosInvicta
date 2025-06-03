@@ -67,6 +67,7 @@
             btnFinalise.TabIndex = 10;
             btnFinalise.Text = "Finalizar Compra";
             btnFinalise.UseVisualStyleBackColor = true;
+            btnFinalise.Click += btnFinalise_Click;
             // 
             // label1
             // 

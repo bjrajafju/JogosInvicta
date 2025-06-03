@@ -14,7 +14,7 @@ namespace _08_DavidFerreira_ProjetoFinal
     {
         public event EventHandler? logout;
         public event EventHandler? perfilAccess;
-
+        public event EventHandler? comprasPrevias;
         public AccountOptionsLoggedIn()
         {
             InitializeComponent();
@@ -32,6 +32,11 @@ namespace _08_DavidFerreira_ProjetoFinal
         private void button1_Click(object sender, EventArgs e)
         {
             perfilAccess?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            comprasPrevias?.Invoke(this, EventArgs.Empty);
         }
     }
 }

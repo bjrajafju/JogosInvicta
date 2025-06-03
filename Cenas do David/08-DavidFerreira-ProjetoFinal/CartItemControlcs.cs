@@ -56,11 +56,6 @@ namespace _08_DavidFerreira_ProjetoFinal
             nupQuant.Value = n;
         }
 
-        private void CartItemControlcs_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnRemoveFromCart_Click(object sender, EventArgs e)
         {
             if(MessageBox.Show("Are you sure?", "Tens a certeza?",MessageBoxButtons.OKCancel) == DialogResult.OK)

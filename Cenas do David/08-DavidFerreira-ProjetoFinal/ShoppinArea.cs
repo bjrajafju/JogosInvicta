@@ -38,7 +38,7 @@ namespace _08_DavidFerreira_ProjetoFinal
 
         private void ShoppinArea_Load(object sender, EventArgs e)
         {
-            produtosTotais = DataManagement.retrieveProducts(GlobalVars.strProvider);
+            produtosTotais = DataProcessing.retrieveProducts();
             List<string>? produtorTotais = DataManagement.retrieveSingleColumn(GlobalVars.strProvider, "Produtor","nomeProdutor");
             List<string>? franchiseTotais = DataManagement.retrieveSingleColumn(GlobalVars.strProvider, "Franchise", "NomeFranchise");
             List<string>? categoriasTotais = DataManagement.retrieveSingleColumn(GlobalVars.strProvider, "Categoria", "categoriaProduto");

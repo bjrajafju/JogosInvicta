@@ -10,17 +10,17 @@ namespace _08_DavidFerreira_ProjetoFinal
     {
         public static bool filterProds(Produto produto, string nomeFornecedor)
         {
-            return (produto.getProdutor() == nomeFornecedor);
+            return (produto.Produtor.NomeProd == nomeFornecedor);
         }
 
         public static bool filterCat(Produto produto, string nomeCat)
         {
-            return ( produto.getCategoria()== nomeCat);
+            return ( produto.Categoria.NomeCat == nomeCat);
         }
 
         public static bool filterFranchise(Produto produto, string nomeFranchise)
         {
-            return (produto.getFranchise() == nomeFranchise);
+            return (produto.Franchise.NomeFra == nomeFranchise);
         }
 
         public static bool filterSearch(Produto produto, string nomeSearch)

@@ -12,17 +12,17 @@ namespace _08_DavidFerreira_ProjetoFinal
 {
     public partial class PerfilUtilizador : Form
     {
-        int idCliente;
+        Cliente Customer;
         string oldPass = "";
 
         public event EventHandler? returnHome;
-        public PerfilUtilizador(int idCliente)
+        public PerfilUtilizador(Cliente c)
         {
-            this.idCliente = idCliente;
             InitializeComponent();
+            resetToDefault(c);
         }
 
-        public int IdCliente { get { return idCliente; } set { idCliente = value; } }
+        public Cliente Cliente { get { return Customer; } set { Customer= value; } }
 
         public void resetPasswords()
         {
@@ -31,16 +31,15 @@ namespace _08_DavidFerreira_ProjetoFinal
             txtOldPassword.Text = "";
         }
 
-        public void resetToDefault()
+        public void resetToDefault(Cliente c)
         {
-            List<string> strs = DataManagement.retrieveStrings(GlobalVars.strProvider, "Cliente", "*", "IdCliente = "+idCliente)[0];
-            txtNomeCliente.Text = strs[1];
-            txtTelefone.Text = strs[2];
-            txtEmail.Text = strs[3];
-            txtRua.Text = strs[4];
-            txtCodPostal.Text = strs[5];
-            txtCidade.Text = strs[6];
-            oldPass = strs[8];
+            Customer = c;
+            txtCidade.Text = c.Cidade;
+            txtCodPostal.Text = c.CodPostal;
+            txtEmail.Text = c.Email;
+            txtNomeCliente.Text = c.NomeCliente;
+            txtRua.Text = c.Address;
+            txtTelefone.Text = c.Telefone;
             List<string> strsPaises = DataManagement.retrieveSingleColumn(GlobalVars.strProvider, "Paises", "Pais");
 
             for (int i = 0; i < strsPaises.Count; i++)
@@ -48,14 +47,14 @@ namespace _08_DavidFerreira_ProjetoFinal
                 cboPaises.Items.Add(strsPaises[i]);
             }
 
-            cboPaises.SelectedItem = DataManagement.retrieveStrings(GlobalVars.strProvider, "Paises", "Pais", "IdPais = " + strs[7])[0][0];
+            cboPaises.SelectedItem = Customer.Pais.NomePais;
 
             resetPasswords();
         }
 
         private void PerfilUtilizador_Load(object sender, EventArgs e)
         {
-            resetToDefault();
+
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
@@ -71,7 +70,7 @@ namespace _08_DavidFerreira_ProjetoFinal
 
             foreach (Control item in pnlData2.Controls)
             {
-                if (item.Text == "" || cboPaises.SelectedIndex < 1)
+                if (item.Text == "" || cboPaises.SelectedIndex < 0)
                 {
                     MessageBox.Show("Dados de Localização Vazios");
                     return;
@@ -125,7 +124,7 @@ namespace _08_DavidFerreira_ProjetoFinal
             colunas.Add("PalavraPasse");
 
             List<string> values = new List<string>();
-            values.Add(idCliente.ToString());
+            values.Add(Customer.Id.ToString());
             values.Add(txtNomeCliente.Text);
             values.Add(txtTelefone.Text);
             values.Add(txtEmail.Text);

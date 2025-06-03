@@ -9,33 +9,35 @@ namespace _08_DavidFerreira_ProjetoFinal
 {
     public class Produto
     {
+        private int id;
         private string nomeProduto = "";
-        private Int32 idProd = 0;
+        private Produtor produtor = null;
         private double precoUnit = 0;
         private double desconto = 0;
         private string descricao ="";
         private Int16 stock = 0;
-        private Int16 idCategoria = 0;
+        private Categoria categoria = null;
         private Byte avalProd = 0;
         private Image? foto = null;
-        private int idFranchise = 0;
+        private Franchise franchise = null;
         public Produto() {
         }
-        public Produto(string nomeProduto, Int32 IdProd, double precoUnit, double desconto, string descricao, Int16 stock, Int16 idCategoria, Byte avalProd, int franchise, Image foto)
+        public Produto(int id, string nomeProduto, Produtor Produtor, double precoUnit, double desconto, string descricao, Int16 stock, Categoria idCategoria, Byte avalProd, Franchise franchise, Image foto)
         {
+            this.id = id;
             this.nomeProduto = nomeProduto;
-            this.idProd = IdProd;
+            this.produtor = Produtor;
             this.precoUnit = precoUnit;
             this.descricao = descricao;
             this.desconto = desconto;
             this.stock = stock;
-            this.idCategoria = idCategoria;
+            this.categoria = idCategoria;
             this.avalProd = avalProd;
             this.foto = foto;
-            this.idFranchise = franchise;
+            this.franchise = franchise;
         }
 
-
+        public int Id { get { return id; }  set { id = value; } }
         public string NomeProduto { get { return nomeProduto; } set { nomeProduto = value; } }
 
         public double PrecoUnit { get { return precoUnit; } set { precoUnit = value; } }
@@ -44,7 +46,7 @@ namespace _08_DavidFerreira_ProjetoFinal
         public Image? Foto { get { return foto; } set { foto = value; } }
         public string Descricao { get { return descricao; } set { descricao = value; } }
 
-        public Int16 IdCategoria { get {  return idCategoria; } set { idCategoria = value; } }
+        public Categoria Categoria { get {  return categoria; } set { categoria = value; } }
 
         public Byte AvalProd { get { return avalProd; } set { avalProd = value; } }
 
@@ -61,33 +63,62 @@ namespace _08_DavidFerreira_ProjetoFinal
                 else return "Esgotado";
         }
 
-        public Int32 IdProd
+        public Produtor Produtor
         {
             get
             {
-                return idProd;
+                return produtor;
             }
             set
             {
-                idProd = value;
+                produtor = value;
             } 
         }
 
-        public int IdFranchise { get { return idFranchise; } set { idFranchise = value; }}
+        public Franchise Franchise { get { return franchise; } set { franchise = value; }}
 
-        public string getCategoria()
+
+    }
+
+    public class Categoria
+    {
+        int id;
+        string name;
+        public int IdCategoria { get { return id; } set { id = value; } }
+        public string NomeCat { get { return name; } set { name = value; } }
+
+        public Categoria(int id = 0, string name = "")
         {
-            return DataManagement.retrieveStrings(GlobalVars.strProvider, "Categoria", "categoriaProduto", "IdCategoria = " + idCategoria)[0][0];
+            this.id = id;
+            this.name = name;
         }
+    }
 
-        public string getProdutor()
+    public class  Franchise
+    {
+        int id;
+         string name;
+        public int IdFranchise { get { return id; } set { id = value; } }
+        public string NomeFra { get { return name; } set { name = value; } }
+
+        public Franchise(int id = 0, string name = "")
         {
-            return (DataManagement.retrieveStrings(GlobalVars.strProvider, "Produtor", "nomeProdutor", "IdProdutor = " + idProd))[0][0];
+            this.id = id;
+            this.name = name;
         }
+    }
 
-        public string getFranchise()
+    public class Produtor
+    {
+        int id;
+        string name;
+        public int IdProdutor { get { return id; } set { id = value; } }
+        public string NomeProd { get { return name; } set { name = value; } }
+
+        public Produtor(int id = 0, string name = "")
         {
-            return DataManagement.retrieveStrings(GlobalVars.strProvider, "Franchise", "nomeFranchise", "IdFranchise = " + idFranchise)[0][0];
+            this.id = id;
+            this.name = name;
         }
     }
 }
