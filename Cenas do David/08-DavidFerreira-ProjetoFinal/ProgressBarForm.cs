@@ -34,13 +34,13 @@ namespace _08_DavidFerreira_ProjetoFinal
             }
             else if (progressBar1.Value < 25)
             {
-                lblProgressIndicator.Text = "A vender os teus dados aos chinocas";
-                time += 1;
+                lblProgressIndicator.Text = "A vender os teus dados aos chineses";
+                time += 0.5;
             }
             else if (progressBar1.Value < 50)
             {
                 lblProgressIndicator.Text = "A sacar dinheiro da tua conta";
-                time += 2;
+                time += 1;
             }
             else if (progressBar1.Value < 52)
             {
