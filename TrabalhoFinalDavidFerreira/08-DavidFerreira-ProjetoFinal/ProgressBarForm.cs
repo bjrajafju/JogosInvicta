@@ -54,12 +54,12 @@ namespace _08_DavidFerreira_ProjetoFinal
             }
             else if (progressBar1.Value < 75)
             {
-                lblProgressIndicator.Text = "I'd Like to be...";
+                lblProgressIndicator.Text = "A caminhar por Penny Lane";
                 time += 0.8;
             }
             else if (progressBar1.Value < 80)
             {
-                lblProgressIndicator.Text = "Under The Sea";
+                lblProgressIndicator.Text = "A espalhar democracia";
                 time += 0.9;
             }
             else if (progressBar1.Value < 100)

@@ -40,7 +40,7 @@
               "RelativeDocumentMoniker": "ProgressBarForm.cs",
               "ToolTip": "C:\\Users\\matia\\Documents\\JogosInvicta\\Cenas do David\\08-DavidFerreira-ProjetoFinal\\ProgressBarForm.cs",
               "RelativeToolTip": "ProgressBarForm.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAYwCoAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAYwD0AAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-04T10:56:36.558Z",
               "EditorCaption": ""
@@ -55,8 +55,7 @@
               "RelativeToolTip": "DataManagement.cs",
               "ViewState": "AgIAADcAAAAAAAAAAAAQwB8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-04T08:44:28.094Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-04T08:44:28.094Z"
             },
             {
               "$type": "Document",
@@ -68,8 +67,7 @@
               "RelativeToolTip": "DataProcessing.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAFgAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-04T08:44:03.718Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-04T08:44:03.718Z"
             },
             {
               "$type": "Document",
@@ -81,8 +79,7 @@
               "RelativeToolTip": "CartItemControlcs.cs",
               "ViewState": "AgIAABkAAAAAAAAAAAAQwDgAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-04T08:11:18.566Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-04T08:11:18.566Z"
             }
           ]
         }
