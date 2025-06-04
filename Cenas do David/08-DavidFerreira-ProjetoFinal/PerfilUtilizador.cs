@@ -16,13 +16,14 @@ namespace _08_DavidFerreira_ProjetoFinal
         string oldPass = "";
 
         public event EventHandler? returnHome;
-        public PerfilUtilizador(Cliente c)
+        public event EventHandler? deleteAccount;
+        public PerfilUtilizador(ref Cliente c)
         {
             InitializeComponent();
-            resetToDefault(c);
+            resetToDefault(ref c);
         }
 
-        public Cliente Cliente { get { return Customer; } set { Customer= value; } }
+        public Cliente Cliente { get { return Customer; } set { Customer = value; } }
 
         public void resetPasswords()
         {
@@ -31,7 +32,7 @@ namespace _08_DavidFerreira_ProjetoFinal
             txtOldPassword.Text = "";
         }
 
-        public void resetToDefault(Cliente c)
+        public void resetToDefault(ref Cliente c)
         {
             Customer = c;
             txtCidade.Text = c.Cidade;
@@ -91,7 +92,7 @@ namespace _08_DavidFerreira_ProjetoFinal
             bool changedPassword = true;
             if (txtOldPassword.Text.Length != 0)
             {
-                if(txtOldPassword.Text != oldPass && changedPassword)
+                if (txtOldPassword.Text != oldPass && changedPassword)
                 {
                     MessageBox.Show("A sua Password antiga não corresponde à introduzida.");
                     changedPassword = false;
@@ -110,7 +111,8 @@ namespace _08_DavidFerreira_ProjetoFinal
                     changedPassword = false;
                     return;
                 }
-            } else changedPassword = false;
+            }
+            else changedPassword = false;
 
             List<string> colunas = new List<string>();
             colunas.Add("IdCliente");
@@ -132,9 +134,11 @@ namespace _08_DavidFerreira_ProjetoFinal
             values.Add(txtCodPostal.Text);
             values.Add(txtCidade.Text);
             values.Add(DataManagement.retrieveStrings(GlobalVars.strProvider, "Paises", "IdPais", "Pais ='" + cboPaises?.SelectedItem.ToString() + "'")[0][0]);
-            if (changedPassword) {
+            if (changedPassword)
+            {
                 values.Add(txtNewPassword.Text);
-            } else values.Add(oldPass);
+            }
+            else values.Add(oldPass);
             int n = DataManagement.updateDatabase(GlobalVars.strProvider, "Cliente", colunas, values);
             if (n == GlobalVars.aOk)
             {
@@ -153,6 +157,24 @@ namespace _08_DavidFerreira_ProjetoFinal
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             returnHome?.Invoke(sender, EventArgs.Empty);
+        }
+
+        private void btnDeleteAccount_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("A sua conta será eliminada. Tem a certeza?", "Atenção!", MessageBoxButtons.YesNo) != DialogResult.Yes)
+            {
+                return;
+            }
+
+            if (MessageBox.Show("Tem mesmo a certeza? Esta ação é irrecurperável", "Atenção!", MessageBoxButtons.YesNo) != DialogResult.Yes)
+            {
+                return;
+            }
+
+            if(MessageBox.Show("Ficamos triste de o ver ir embora. As suas encomendas em progresso serão canceladas.", "Atenção!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                deleteAccount?.Invoke(sender, EventArgs.Empty);
+            }
         }
     }
 }

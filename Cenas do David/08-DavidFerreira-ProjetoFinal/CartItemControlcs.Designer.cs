@@ -59,10 +59,12 @@
             // 
             lblPrice.AutoSize = true;
             lblPrice.Dock = DockStyle.Right;
-            lblPrice.Location = new Point(493, 20);
+            lblPrice.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblPrice.ForeColor = Color.ForestGreen;
+            lblPrice.Location = new Point(489, 20);
             lblPrice.Name = "lblPrice";
             lblPrice.Padding = new Padding(0, 20, 0, 0);
-            lblPrice.Size = new Size(59, 45);
+            lblPrice.Size = new Size(63, 45);
             lblPrice.TabIndex = 5;
             lblPrice.Text = "label2";
             // 

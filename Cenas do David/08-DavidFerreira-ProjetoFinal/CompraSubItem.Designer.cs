@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            lblQuantity = new Label();
             lblPrice = new Label();
             label1 = new Label();
             lblProductName = new Label();
             pictureBox1 = new PictureBox();
-            lblQuantity = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -52,14 +52,25 @@
             panel1.Size = new Size(642, 119);
             panel1.TabIndex = 1;
             // 
+            // lblQuantity
+            // 
+            lblQuantity.AutoSize = true;
+            lblQuantity.Location = new Point(221, 67);
+            lblQuantity.Name = "lblQuantity";
+            lblQuantity.Size = new Size(59, 25);
+            lblQuantity.TabIndex = 6;
+            lblQuantity.Text = "label2";
+            // 
             // lblPrice
             // 
             lblPrice.AutoSize = true;
             lblPrice.Dock = DockStyle.Right;
-            lblPrice.Location = new Point(563, 20);
+            lblPrice.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblPrice.ForeColor = Color.ForestGreen;
+            lblPrice.Location = new Point(552, 20);
             lblPrice.Name = "lblPrice";
             lblPrice.Padding = new Padding(0, 20, 0, 0);
-            lblPrice.Size = new Size(59, 45);
+            lblPrice.Size = new Size(70, 48);
             lblPrice.TabIndex = 5;
             lblPrice.Text = "label2";
             // 
@@ -91,15 +102,6 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
-            // 
-            // lblQuantity
-            // 
-            lblQuantity.AutoSize = true;
-            lblQuantity.Location = new Point(221, 67);
-            lblQuantity.Name = "lblQuantity";
-            lblQuantity.Size = new Size(59, 25);
-            lblQuantity.TabIndex = 6;
-            lblQuantity.Text = "label2";
             // 
             // CompraSubItem
             // 

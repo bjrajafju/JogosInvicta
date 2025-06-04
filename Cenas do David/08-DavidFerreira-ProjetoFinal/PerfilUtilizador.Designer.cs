@@ -65,6 +65,7 @@
             label22 = new Label();
             btnRegister = new Button();
             btnCancelar = new Button();
+            btnDeleteAccount = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             pnlData1.SuspendLayout();
@@ -82,7 +83,7 @@
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(panel2);
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(17, 20);
+            panel1.Location = new Point(19, 15);
             panel1.Margin = new Padding(4, 5, 4, 5);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(29, 17, 29, 0);
@@ -209,7 +210,7 @@
             panel4.BorderStyle = BorderStyle.FixedSingle;
             panel4.Controls.Add(panel5);
             panel4.Controls.Add(label10);
-            panel4.Location = new Point(799, 20);
+            panel4.Location = new Point(801, 15);
             panel4.Margin = new Padding(4, 5, 4, 5);
             panel4.Name = "panel4";
             panel4.Padding = new Padding(29, 17, 29, 0);
@@ -360,7 +361,7 @@
             panel10.BorderStyle = BorderStyle.FixedSingle;
             panel10.Controls.Add(panel11);
             panel10.Controls.Add(label22);
-            panel10.Location = new Point(17, 450);
+            panel10.Location = new Point(19, 445);
             panel10.Margin = new Padding(4, 5, 4, 5);
             panel10.Name = "panel10";
             panel10.Padding = new Padding(29, 17, 29, 0);
@@ -401,6 +402,7 @@
             txtConfirmNewPassword.Location = new Point(29, 204);
             txtConfirmNewPassword.Margin = new Padding(4, 5, 4, 5);
             txtConfirmNewPassword.Name = "txtConfirmNewPassword";
+            txtConfirmNewPassword.PasswordChar = '*';
             txtConfirmNewPassword.Size = new Size(580, 31);
             txtConfirmNewPassword.TabIndex = 5;
             // 
@@ -422,6 +424,7 @@
             txtNewPassword.Location = new Point(29, 131);
             txtNewPassword.Margin = new Padding(4, 5, 4, 5);
             txtNewPassword.Name = "txtNewPassword";
+            txtNewPassword.PasswordChar = '*';
             txtNewPassword.Size = new Size(580, 31);
             txtNewPassword.TabIndex = 3;
             // 
@@ -443,6 +446,7 @@
             txtOldPassword.Location = new Point(29, 58);
             txtOldPassword.Margin = new Padding(4, 5, 4, 5);
             txtOldPassword.Name = "txtOldPassword";
+            txtOldPassword.PasswordChar = '*';
             txtOldPassword.Size = new Size(580, 31);
             txtOldPassword.TabIndex = 1;
             // 
@@ -487,7 +491,7 @@
             btnRegister.BackColor = Color.DodgerBlue;
             btnRegister.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnRegister.ForeColor = Color.White;
-            btnRegister.Location = new Point(799, 567);
+            btnRegister.Location = new Point(801, 562);
             btnRegister.Name = "btnRegister";
             btnRegister.Size = new Size(757, 138);
             btnRegister.TabIndex = 16;
@@ -499,19 +503,32 @@
             // 
             btnCancelar.Anchor = AnchorStyles.None;
             btnCancelar.ForeColor = Color.Red;
-            btnCancelar.Location = new Point(799, 727);
+            btnCancelar.Location = new Point(801, 722);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(757, 147);
+            btnCancelar.Size = new Size(757, 144);
             btnCancelar.TabIndex = 15;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
             // 
+            // btnDeleteAccount
+            // 
+            btnDeleteAccount.Anchor = AnchorStyles.None;
+            btnDeleteAccount.ForeColor = Color.Maroon;
+            btnDeleteAccount.Location = new Point(15, 880);
+            btnDeleteAccount.Name = "btnDeleteAccount";
+            btnDeleteAccount.Size = new Size(760, 34);
+            btnDeleteAccount.TabIndex = 17;
+            btnDeleteAccount.Text = "Deletar Conta";
+            btnDeleteAccount.UseVisualStyleBackColor = true;
+            btnDeleteAccount.Click += btnDeleteAccount_Click;
+            // 
             // PerfilUtilizador
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1586, 902);
+            ClientSize = new Size(1586, 931);
+            Controls.Add(btnDeleteAccount);
             Controls.Add(btnRegister);
             Controls.Add(btnCancelar);
             Controls.Add(panel10);
@@ -582,5 +599,6 @@
         private Button btnRegister;
         private Button btnCancelar;
         private Label label21;
+        private Button btnDeleteAccount;
     }
 }

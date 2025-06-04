@@ -59,7 +59,7 @@ namespace _08_DavidFerreira_ProjetoFinal
 
         private void MenuClose(object? sender, EventArgs args)
         {
-            
+
             List<LinhasDoCarrinho> Lines = ShoppingCart.Linhas;
             if (Lines.Count > 0)
             {
@@ -83,7 +83,7 @@ namespace _08_DavidFerreira_ProjetoFinal
 
         private void FinalizarCompra(object? sender, EventArgs args)
         {
-            { 
+            {
                 List<string> cols1 = new List<string>();
                 cols1.Add("IdCompra");
                 cols1.Add("Data");
@@ -112,7 +112,7 @@ namespace _08_DavidFerreira_ProjetoFinal
                 values.Add(ShoppingCart.Linhas[i].Quantidade.ToString());
                 int n = DataManagement.insertIntoDatabase(GlobalVars.strProvider, "CompraProduto", cols, values);
 
-                if(n!=GlobalVars.aOk) MessageBox.Show(n.ToString());
+                if (n != GlobalVars.aOk) MessageBox.Show(n.ToString());
             }
             ComprasPrevias = null;
         }
@@ -135,7 +135,7 @@ namespace _08_DavidFerreira_ProjetoFinal
                 ShoppingCart.AddCartLine(lines[i]);
             }
             int n = DataManagement.removeFromDatabase(GlobalVars.strProvider, "LinhasCarrinho", "IdCliente=" + Customer.Id);
-            if ( n!= GlobalVars.aOk)
+            if (n != GlobalVars.aOk)
             {
                 MessageBox.Show(n.ToString());
             }
@@ -145,7 +145,7 @@ namespace _08_DavidFerreira_ProjetoFinal
         {
             if (loginPage != null)
             {
-                loginPage.Activate();
+
             }
             else
             {
@@ -160,6 +160,7 @@ namespace _08_DavidFerreira_ProjetoFinal
                 pnlAccountOptions.Size = new Size(pnlAccountOptions.Size.Width - 10, pnlAccountOptions.Size.Height);
             }
             loginPage.Show();
+            loginPage.Activate();
         }
 
         private void Logout(object? sender, EventArgs e)
@@ -174,7 +175,7 @@ namespace _08_DavidFerreira_ProjetoFinal
             shoppingAreaForm.Activate();
             perfilUtilizador = null;
             ComprasPrevias = null;
-            GC.Collect();   
+            GC.Collect();
         }
 
         private void returnToHome(object? sender, EventArgs e)
@@ -187,8 +188,7 @@ namespace _08_DavidFerreira_ProjetoFinal
         {
             if (registryPage != null)
             {
-                registryPage.resetTxtBoxes();
-                registryPage.Activate();
+
             }
             else
             {
@@ -203,6 +203,8 @@ namespace _08_DavidFerreira_ProjetoFinal
                 pnlAccountOptions.Size = new Size(pnlAccountOptions.Size.Width - 10, pnlAccountOptions.Size.Height);
             }
             registryPage.Show();
+            registryPage.resetTxtBoxes();
+            registryPage.Activate();
 
         }
 
@@ -216,20 +218,17 @@ namespace _08_DavidFerreira_ProjetoFinal
                 productPage.OnAddToCart += AddShoppingCart;
                 productPage.Show();
             }
-            else
-            {
-                productPage.Activate();
-            }
 
             productPage.refreshProduct(e.Produto);
+            productPage.Activate();
         }
 
 
         public void AddShoppingCart(object sender, LinhaEventArgs l)
         {
-            if(Customer == null)
+            if (Customer == null)
             {
-                if(MessageBox.Show("Não está logged in para aceder ao seu carrinho. Gostaria de dar login?","Atenção", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                if (MessageBox.Show("Não está logged in para aceder ao seu carrinho. Gostaria de dar login?", "Atenção", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
                     LoginLoad(this, EventArgs.Empty);
                 }
@@ -240,7 +239,8 @@ namespace _08_DavidFerreira_ProjetoFinal
             if (MessageBox.Show("Adicionado ao carrinho com sucesso! Pretende ver o seu carrinho?", "Sucesso!", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 ShoppingCart.Activate();
-            } else
+            }
+            else
             {
                 shoppingAreaForm.Activate();
             }
@@ -249,31 +249,27 @@ namespace _08_DavidFerreira_ProjetoFinal
 
         private void ProfileLoad(object? sender, EventArgs e)
         {
-            if (perfilUtilizador != null)
+            if (perfilUtilizador == null)
             {
-                perfilUtilizador.Activate();
-            }
-            else
-            {
-                perfilUtilizador = new PerfilUtilizador(Customer);
+                perfilUtilizador = new PerfilUtilizador(ref Customer);
                 perfilUtilizador.MdiParent = this;
                 perfilUtilizador.Dock = DockStyle.Fill;
                 perfilUtilizador.returnHome += returnToHome;
+                perfilUtilizador.deleteAccount += DeleteAccount;
             }
+
             while (pnlAccountOptions.Size.Width > 0)
             {
                 pnlAccountOptions.Size = new Size(pnlAccountOptions.Size.Width - 10, pnlAccountOptions.Size.Height);
             }
+            perfilUtilizador.Activate();
             perfilUtilizador.Show();
         }
 
+
         private void ComprasPreviasLoad(object sender, EventArgs e)
         {
-            if (ComprasPrevias != null)
-            {
-                ComprasPrevias.Activate();
-            }
-            else
+            if (ComprasPrevias == null)
             {
                 ComprasPrevias = new ComprasPrevias(DataProcessing.retrieveCompras(Customer));
                 ComprasPrevias.MdiParent = this;
@@ -284,6 +280,7 @@ namespace _08_DavidFerreira_ProjetoFinal
             {
                 pnlAccountOptions.Size = new Size(pnlAccountOptions.Size.Width - 10, pnlAccountOptions.Size.Height);
             }
+            ComprasPrevias.Activate();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -331,7 +328,35 @@ namespace _08_DavidFerreira_ProjetoFinal
 
         private void btnCart_Click(object? sender, EventArgs e)
         {
-            if(ShoppingCart != null) ShoppingCart.Activate();
+            if (ShoppingCart != null) ShoppingCart.Activate();
+        }
+
+        private void DeleteAccount(object? sender, EventArgs e)
+        {
+            List<Compra> compras = DataProcessing.retrieveCompras(Customer);
+
+            for (int i = 0; i < compras.Count; i++)
+            {
+                int n = DataManagement.removeFromDatabase(GlobalVars.strProvider, "CompraProduto", "IdCompra=" + compras[i].Id);
+                if (n != GlobalVars.aOk) MessageBox.Show(n.ToString());
+            }
+
+            int ret = DataManagement.removeFromDatabase(GlobalVars.strProvider, "Compra", "IdCliente =" + Customer.Id);
+            if (ret != GlobalVars.aOk)
+            {
+                MessageBox.Show(ret.ToString());
+            }
+
+            int lastOne = DataManagement.removeFromDatabase(GlobalVars.strProvider, "Cliente", "IdCliente=" + Customer.Id);
+            if (lastOne == GlobalVars.aOk)
+            {
+                MessageBox.Show("Conta Eliminada com Sucesso!");
+                Logout(sender, e);
+            }
+            else
+            {
+                MessageBox.Show(lastOne.ToString());
+            }
         }
     }
 }

@@ -1,7 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\matia\\Documents\\JogosInvicta\\Cenas do David\\08-DavidFerreira-ProjetoFinal\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5899E808-003F-4FB3-9B9D-D310B94D96DA}|08-DavidFerreira-ProjetoFinal.csproj|c:\\users\\matia\\documents\\jogosinvicta\\cenas do david\\08-davidferreira-projetofinal\\cartitemcontrolcs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5899E808-003F-4FB3-9B9D-D310B94D96DA}|08-DavidFerreira-ProjetoFinal.csproj|solutionrelative:cartitemcontrolcs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +14,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 342,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CartItemControlcs.cs",
+              "DocumentMoniker": "C:\\Users\\matia\\Documents\\JogosInvicta\\Cenas do David\\08-DavidFerreira-ProjetoFinal\\CartItemControlcs.cs",
+              "RelativeDocumentMoniker": "CartItemControlcs.cs",
+              "ToolTip": "C:\\Users\\matia\\Documents\\JogosInvicta\\Cenas do David\\08-DavidFerreira-ProjetoFinal\\CartItemControlcs.cs",
+              "RelativeToolTip": "CartItemControlcs.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAYwDgAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T08:11:18.566Z",
+              "EditorCaption": ""
             }
           ]
         }

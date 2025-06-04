@@ -41,9 +41,16 @@ namespace _08_DavidFerreira_ProjetoFinal
 
         private void nupQuant_ValueChanged(object sender, EventArgs e)
         {
-            linha.Quantidade = (int)nupQuant.Value;
-            updatePrice();
-            ChangeProductCount?.Invoke(sender, new LinhaEventArgs(linha));
+            if (nupQuant.Value < 1)
+            {
+                nupQuant.Value = 1;
+            }
+            else
+            {
+                linha.Quantidade = (int)nupQuant.Value;
+                updatePrice();
+                ChangeProductCount?.Invoke(sender, new LinhaEventArgs(linha));
+            }
         }
 
         private void updatePrice()
@@ -53,7 +60,14 @@ namespace _08_DavidFerreira_ProjetoFinal
 
         public void updateQuantity(int n)
         {
-            nupQuant.Value = n;
+            try
+            {
+                nupQuant.Value = n;
+            } 
+            catch (Exception ex)
+            {
+                MessageBox.Show("Quantidade de Produtos excedendo stock");
+            }
         }
 
         private void btnRemoveFromCart_Click(object sender, EventArgs e)

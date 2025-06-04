@@ -43,6 +43,7 @@ namespace _08_DavidFerreira_ProjetoFinal
                     txt.Text = "";
                 }
             }
+            cboPaíses.SelectedIndex = 0;
         }
 
         private void btnRegister_Click_1(object sender, EventArgs e)
@@ -96,6 +97,13 @@ namespace _08_DavidFerreira_ProjetoFinal
                 MessageBox.Show("Password Muito Curta. No Mínimo 8 caracteres.");
                 return;
             }
+
+            if(DataManagement.retrieveStrings(GlobalVars.strProvider, "Cliente", "IdCliente", "emailCliente = '" + txtEmail.Text + "'").Count > 0)
+            {
+                MessageBox.Show("Já existe um registo com este email!");
+                return;
+            }
+
             List<string> colunas = new List<string>();
             colunas.Add("nomeCliente");
             colunas.Add("telefoneCliente");
