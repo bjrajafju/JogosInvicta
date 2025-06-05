@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\matia\\Documents\\JogosInvicta\\Cenas do David\\08-DavidFerreira-ProjetoFinal\\08-DavidFerreira-ProjetoFinal.csproj": {}
+    "C:\\Users\\matia\\Documents\\JogosInvicta\\TrabalhoFinalDavidFerreira\\08-DavidFerreira-ProjetoFinal\\08-DavidFerreira-ProjetoFinal.csproj": {}
   },
   "projects": {
-    "C:\\Users\\matia\\Documents\\JogosInvicta\\Cenas do David\\08-DavidFerreira-ProjetoFinal\\08-DavidFerreira-ProjetoFinal.csproj": {
+    "C:\\Users\\matia\\Documents\\JogosInvicta\\TrabalhoFinalDavidFerreira\\08-DavidFerreira-ProjetoFinal\\08-DavidFerreira-ProjetoFinal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\matia\\Documents\\JogosInvicta\\Cenas do David\\08-DavidFerreira-ProjetoFinal\\08-DavidFerreira-ProjetoFinal.csproj",
+        "projectUniqueName": "C:\\Users\\matia\\Documents\\JogosInvicta\\TrabalhoFinalDavidFerreira\\08-DavidFerreira-ProjetoFinal\\08-DavidFerreira-ProjetoFinal.csproj",
         "projectName": "08-DavidFerreira-ProjetoFinal",
-        "projectPath": "C:\\Users\\matia\\Documents\\JogosInvicta\\Cenas do David\\08-DavidFerreira-ProjetoFinal\\08-DavidFerreira-ProjetoFinal.csproj",
+        "projectPath": "C:\\Users\\matia\\Documents\\JogosInvicta\\TrabalhoFinalDavidFerreira\\08-DavidFerreira-ProjetoFinal\\08-DavidFerreira-ProjetoFinal.csproj",
         "packagesPath": "C:\\Users\\matia\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\matia\\Documents\\JogosInvicta\\Cenas do David\\08-DavidFerreira-ProjetoFinal\\obj\\",
+        "outputPath": "C:\\Users\\matia\\Documents\\JogosInvicta\\TrabalhoFinalDavidFerreira\\08-DavidFerreira-ProjetoFinal\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

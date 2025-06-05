@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hHiNDO9qUxU=",
+  "dgSpecHash": "0I9J0xpqJJA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\matia\\Documents\\JogosInvicta\\Cenas do David\\08-DavidFerreira-ProjetoFinal\\08-DavidFerreira-ProjetoFinal.csproj",
+  "projectFilePath": "C:\\Users\\matia\\Documents\\JogosInvicta\\TrabalhoFinalDavidFerreira\\08-DavidFerreira-ProjetoFinal\\08-DavidFerreira-ProjetoFinal.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\matia\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\matia\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
