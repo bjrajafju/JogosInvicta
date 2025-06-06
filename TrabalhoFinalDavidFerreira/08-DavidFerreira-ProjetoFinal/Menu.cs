@@ -22,7 +22,6 @@ namespace _08_DavidFerreira_ProjetoFinal
         private ShoppingCart ShoppingCart = null!;
         private ComprasPrevias ComprasPrevias = null!;
 
-        private Cliente Customer = null!;
         public Menu()
         {
             GlobalVars.QuantidadeCompras = DataManagement.RowsCount(GlobalVars.strProvider, "Compra");
@@ -72,7 +71,7 @@ namespace _08_DavidFerreira_ProjetoFinal
                     for (int i = 0; i < Lines.Count; i++)
                     {
                         List<string> vals = new List<string>();
-                        vals.Add(Customer.Id.ToString());
+                        vals.Add(GlobalVars.currentCustomer.Id.ToString());
                         vals.Add(Lines[i].Product.Id.ToString());
                         vals.Add(Lines[i].Quantidade.ToString());
                         DataManagement.insertIntoDatabase(GlobalVars.strProvider, "LinhasCarrinho", cols, vals);
@@ -94,7 +93,7 @@ namespace _08_DavidFerreira_ProjetoFinal
                 values.Add((++GlobalVars.QuantidadeCompras).ToString());
                 values.Add("#" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss") + "#");
                 values.Add("3");
-                values.Add(Customer.Id.ToString());
+                values.Add(GlobalVars.currentCustomer.Id.ToString());
 
                 int n = DataManagement.insertIntoDatabase(GlobalVars.strProvider, "Compra", cols1, values);
                 if (n != GlobalVars.aOk) MessageBox.Show(n.ToString());
@@ -119,7 +118,7 @@ namespace _08_DavidFerreira_ProjetoFinal
 
         public void accountLoggedIn(object sender, StringEventArgs e)
         {
-            Customer = DataProcessing.retrieveSingleClient(Convert.ToInt32(e.Str));
+            GlobalVars.currentCustomer = DataProcessing.retrieveSingleClient(Convert.ToInt32(e.Str));
             pnlAccountOptions.Controls.Clear();
             shoppingAreaForm.Activate();
             AccountOptionsLoggedIn acc = new AccountOptionsLoggedIn();
@@ -128,13 +127,13 @@ namespace _08_DavidFerreira_ProjetoFinal
             acc.comprasPrevias += ComprasPreviasLoad;
             pnlAccountOptions.Controls.Add(acc);
 
-            List<LinhasDoCarrinho> lines = DataProcessing.retrieveShoppingLines(Customer.Id);
+            List<LinhasDoCarrinho> lines = DataProcessing.retrieveShoppingLines(GlobalVars.currentCustomer.Id);
 
             for (int i = 0; i < lines.Count; i++)
             {
                 ShoppingCart.AddCartLine(lines[i]);
             }
-            int n = DataManagement.removeFromDatabase(GlobalVars.strProvider, "LinhasCarrinho", "IdCliente=" + Customer.Id);
+            int n = DataManagement.removeFromDatabase(GlobalVars.strProvider, "LinhasCarrinho", "IdCliente=" + GlobalVars.currentCustomer.Id);
             if (n != GlobalVars.aOk)
             {
                 MessageBox.Show(n.ToString());
@@ -226,7 +225,7 @@ namespace _08_DavidFerreira_ProjetoFinal
 
         public void AddShoppingCart(object sender, LinhaEventArgs l)
         {
-            if (Customer == null)
+            if (GlobalVars.currentCustomer == null)
             {
                 if (MessageBox.Show("Não está logged in para aceder ao seu carrinho. Gostaria de dar login?", "Atenção", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
@@ -251,7 +250,7 @@ namespace _08_DavidFerreira_ProjetoFinal
         {
             if (perfilUtilizador == null)
             {
-                perfilUtilizador = new PerfilUtilizador(ref Customer);
+                perfilUtilizador = new PerfilUtilizador();
                 perfilUtilizador.MdiParent = this;
                 perfilUtilizador.Dock = DockStyle.Fill;
                 perfilUtilizador.returnHome += returnToHome;
@@ -271,7 +270,7 @@ namespace _08_DavidFerreira_ProjetoFinal
         {
             if (ComprasPrevias == null)
             {
-                ComprasPrevias = new ComprasPrevias(DataProcessing.retrieveCompras(Customer));
+                ComprasPrevias = new ComprasPrevias(DataProcessing.retrieveCompras(GlobalVars.currentCustomer));
                 ComprasPrevias.MdiParent = this;
                 ComprasPrevias.Dock = DockStyle.Fill;
                 ComprasPrevias.Show();
@@ -333,7 +332,7 @@ namespace _08_DavidFerreira_ProjetoFinal
 
         private void DeleteAccount(object? sender, EventArgs e)
         {
-            List<Compra> compras = DataProcessing.retrieveCompras(Customer);
+            List<Compra> compras = DataProcessing.retrieveCompras(GlobalVars.currentCustomer);
 
             for (int i = 0; i < compras.Count; i++)
             {
@@ -341,13 +340,13 @@ namespace _08_DavidFerreira_ProjetoFinal
                 if (n != GlobalVars.aOk) MessageBox.Show(n.ToString());
             }
 
-            int ret = DataManagement.removeFromDatabase(GlobalVars.strProvider, "Compra", "IdCliente =" + Customer.Id);
+            int ret = DataManagement.removeFromDatabase(GlobalVars.strProvider, "Compra", "IdCliente =" + GlobalVars.currentCustomer.Id);
             if (ret != GlobalVars.aOk)
             {
                 MessageBox.Show(ret.ToString());
             }
 
-            int lastOne = DataManagement.removeFromDatabase(GlobalVars.strProvider, "Cliente", "IdCliente=" + Customer.Id);
+            int lastOne = DataManagement.removeFromDatabase(GlobalVars.strProvider, "Cliente", "IdCliente=" + GlobalVars.currentCustomer.Id);
             if (lastOne == GlobalVars.aOk)
             {
                 MessageBox.Show("Conta Eliminada com Sucesso!");

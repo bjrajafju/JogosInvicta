@@ -67,11 +67,6 @@ namespace _08_DavidFerreira_ProjetoFinal
                 }
             }
 
-            if (txtCodPostal.Text.Length != 8)
-            {
-                MessageBox.Show("Código-Postal Inválido");
-            }
-
             foreach (Control item in panel3.Controls)
             {
                 if (item.Text == "")
@@ -79,6 +74,12 @@ namespace _08_DavidFerreira_ProjetoFinal
                     MessageBox.Show("Password Vazia");
                     return;
                 }
+            }
+
+            if (!txtTelefone.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("Caractéres não numéricos não aceites no Nº de Telefone");
+                return;
             }
 
             if (!txtEmail.Text.Contains('@') && !txtEmail.Text.Contains('.'))

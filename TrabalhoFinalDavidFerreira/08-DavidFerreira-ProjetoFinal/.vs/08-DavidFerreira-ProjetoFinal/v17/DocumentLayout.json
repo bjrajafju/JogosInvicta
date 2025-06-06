@@ -3,28 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\matia\\Documents\\JogosInvicta\\TrabalhoFinalDavidFerreira\\08-DavidFerreira-ProjetoFinal\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5899E808-003F-4FB3-9B9D-D310B94D96DA}|08-DavidFerreira-ProjetoFinal.csproj|c:\\users\\matia\\documents\\jogosinvicta\\trabalhofinaldavidferreira\\08-davidferreira-projetofinal\\datamanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5899E808-003F-4FB3-9B9D-D310B94D96DA}|08-DavidFerreira-ProjetoFinal.csproj|solutionrelative:datamanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{5899E808-003F-4FB3-9B9D-D310B94D96DA}|08-DavidFerreira-ProjetoFinal.csproj|c:\\users\\matia\\documents\\jogosinvicta\\trabalhofinaldavidferreira\\08-davidferreira-projetofinal\\registar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5899E808-003F-4FB3-9B9D-D310B94D96DA}|08-DavidFerreira-ProjetoFinal.csproj|solutionrelative:registar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5899E808-003F-4FB3-9B9D-D310B94D96DA}|08-DavidFerreira-ProjetoFinal.csproj|c:\\users\\matia\\documents\\jogosinvicta\\trabalhofinaldavidferreira\\08-davidferreira-projetofinal\\registar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{5899E808-003F-4FB3-9B9D-D310B94D96DA}|08-DavidFerreira-ProjetoFinal.csproj|solutionrelative:registar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{5899E808-003F-4FB3-9B9D-D310B94D96DA}|08-DavidFerreira-ProjetoFinal.csproj|c:\\users\\matia\\documents\\jogosinvicta\\trabalhofinaldavidferreira\\08-davidferreira-projetofinal\\perfilutilizador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5899E808-003F-4FB3-9B9D-D310B94D96DA}|08-DavidFerreira-ProjetoFinal.csproj|solutionrelative:perfilutilizador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5899E808-003F-4FB3-9B9D-D310B94D96DA}|08-DavidFerreira-ProjetoFinal.csproj|c:\\users\\matia\\documents\\jogosinvicta\\trabalhofinaldavidferreira\\08-davidferreira-projetofinal\\productpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{5899E808-003F-4FB3-9B9D-D310B94D96DA}|08-DavidFerreira-ProjetoFinal.csproj|solutionrelative:productpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{5899E808-003F-4FB3-9B9D-D310B94D96DA}|08-DavidFerreira-ProjetoFinal.csproj|c:\\users\\matia\\documents\\jogosinvicta\\trabalhofinaldavidferreira\\08-davidferreira-projetofinal\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5899E808-003F-4FB3-9B9D-D310B94D96DA}|08-DavidFerreira-ProjetoFinal.csproj|solutionrelative:menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5899E808-003F-4FB3-9B9D-D310B94D96DA}|08-DavidFerreira-ProjetoFinal.csproj|c:\\users\\matia\\documents\\jogosinvicta\\trabalhofinaldavidferreira\\08-davidferreira-projetofinal\\productpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5899E808-003F-4FB3-9B9D-D310B94D96DA}|08-DavidFerreira-ProjetoFinal.csproj|solutionrelative:productpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5899E808-003F-4FB3-9B9D-D310B94D96DA}|08-DavidFerreira-ProjetoFinal.csproj|C:\\Users\\matia\\Documents\\JogosInvicta\\TrabalhoFinalDavidFerreira\\08-DavidFerreira-ProjetoFinal\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{5899E808-003F-4FB3-9B9D-D310B94D96DA}|08-DavidFerreira-ProjetoFinal.csproj|solutionrelative:menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5899E808-003F-4FB3-9B9D-D310B94D96DA}|08-DavidFerreira-ProjetoFinal.csproj|c:\\users\\matia\\documents\\jogosinvicta\\trabalhofinaldavidferreira\\08-davidferreira-projetofinal\\shoppinarea.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{5899E808-003F-4FB3-9B9D-D310B94D96DA}|08-DavidFerreira-ProjetoFinal.csproj|solutionrelative:shoppinarea.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{5899E808-003F-4FB3-9B9D-D310B94D96DA}|08-DavidFerreira-ProjetoFinal.csproj|c:\\users\\matia\\documents\\jogosinvicta\\trabalhofinaldavidferreira\\08-davidferreira-projetofinal\\datamanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5899E808-003F-4FB3-9B9D-D310B94D96DA}|08-DavidFerreira-ProjetoFinal.csproj|solutionrelative:datamanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,11 +30,65 @@
       "DocumentGroups": [
         {
           "DockedWidth": 342,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Registar.cs",
+              "DocumentMoniker": "C:\\Users\\matia\\Documents\\JogosInvicta\\TrabalhoFinalDavidFerreira\\08-DavidFerreira-ProjetoFinal\\Registar.cs",
+              "RelativeDocumentMoniker": "Registar.cs",
+              "ToolTip": "C:\\Users\\matia\\Documents\\JogosInvicta\\TrabalhoFinalDavidFerreira\\08-DavidFerreira-ProjetoFinal\\Registar.cs",
+              "RelativeToolTip": "Registar.cs",
+              "ViewState": "AgIAAHcAAAAAAAAAAAAgwFAAAABXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-05T15:32:39.578Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PerfilUtilizador.cs",
+              "DocumentMoniker": "C:\\Users\\matia\\Documents\\JogosInvicta\\TrabalhoFinalDavidFerreira\\08-DavidFerreira-ProjetoFinal\\PerfilUtilizador.cs",
+              "RelativeDocumentMoniker": "PerfilUtilizador.cs",
+              "ToolTip": "C:\\Users\\matia\\Documents\\JogosInvicta\\TrabalhoFinalDavidFerreira\\08-DavidFerreira-ProjetoFinal\\PerfilUtilizador.cs",
+              "RelativeToolTip": "PerfilUtilizador.cs",
+              "ViewState": "AgIAAGUAAAAAAAAAAAAYwHoAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-05T15:22:02.39Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Menu.cs",
+              "DocumentMoniker": "C:\\Users\\matia\\Documents\\JogosInvicta\\TrabalhoFinalDavidFerreira\\08-DavidFerreira-ProjetoFinal\\Menu.cs",
+              "RelativeDocumentMoniker": "Menu.cs",
+              "ToolTip": "C:\\Users\\matia\\Documents\\JogosInvicta\\TrabalhoFinalDavidFerreira\\08-DavidFerreira-ProjetoFinal\\Menu.cs",
+              "RelativeToolTip": "Menu.cs",
+              "ViewState": "AgIAAOAAAAAAAAAAAAAAwPwAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-05T15:19:28.117Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Menu.cs [Projeto]",
+              "DocumentMoniker": "C:\\Users\\matia\\Documents\\JogosInvicta\\TrabalhoFinalDavidFerreira\\08-DavidFerreira-ProjetoFinal\\Menu.cs",
+              "RelativeDocumentMoniker": "Menu.cs",
+              "ToolTip": "C:\\Users\\matia\\Documents\\JogosInvicta\\TrabalhoFinalDavidFerreira\\08-DavidFerreira-ProjetoFinal\\Menu.cs [Projeto]",
+              "RelativeToolTip": "Menu.cs [Projeto]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-05T15:19:25.158Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "DataManagement.cs",
               "DocumentMoniker": "C:\\Users\\matia\\Documents\\JogosInvicta\\TrabalhoFinalDavidFerreira\\08-DavidFerreira-ProjetoFinal\\DataManagement.cs",
               "RelativeDocumentMoniker": "DataManagement.cs",
@@ -46,74 +96,7 @@
               "RelativeToolTip": "DataManagement.cs",
               "ViewState": "AgIAAGsAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T08:55:42.499Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Registar.cs",
-              "DocumentMoniker": "C:\\Users\\matia\\Documents\\JogosInvicta\\TrabalhoFinalDavidFerreira\\08-DavidFerreira-ProjetoFinal\\Registar.cs",
-              "RelativeDocumentMoniker": "Registar.cs",
-              "ToolTip": "C:\\Users\\matia\\Documents\\JogosInvicta\\TrabalhoFinalDavidFerreira\\08-DavidFerreira-ProjetoFinal\\Registar.cs",
-              "RelativeToolTip": "Registar.cs",
-              "ViewState": "AgIAAGYAAAAAAAAAAAAvwH4AAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T08:53:51.989Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Registar.cs [Projeto]",
-              "DocumentMoniker": "C:\\Users\\matia\\Documents\\JogosInvicta\\TrabalhoFinalDavidFerreira\\08-DavidFerreira-ProjetoFinal\\Registar.cs",
-              "RelativeDocumentMoniker": "Registar.cs",
-              "ToolTip": "C:\\Users\\matia\\Documents\\JogosInvicta\\TrabalhoFinalDavidFerreira\\08-DavidFerreira-ProjetoFinal\\Registar.cs [Projeto]",
-              "RelativeToolTip": "Registar.cs [Projeto]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T08:53:08.542Z",
-              "EditorCaption": " [Projeto]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ProductPage.cs [Projeto]",
-              "DocumentMoniker": "C:\\Users\\matia\\Documents\\JogosInvicta\\TrabalhoFinalDavidFerreira\\08-DavidFerreira-ProjetoFinal\\ProductPage.cs",
-              "RelativeDocumentMoniker": "ProductPage.cs",
-              "ToolTip": "C:\\Users\\matia\\Documents\\JogosInvicta\\TrabalhoFinalDavidFerreira\\08-DavidFerreira-ProjetoFinal\\ProductPage.cs [Projeto]",
-              "RelativeToolTip": "ProductPage.cs [Projeto]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T08:49:45.649Z",
-              "EditorCaption": " [Projeto]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ProductPage.cs",
-              "DocumentMoniker": "C:\\Users\\matia\\Documents\\JogosInvicta\\TrabalhoFinalDavidFerreira\\08-DavidFerreira-ProjetoFinal\\ProductPage.cs",
-              "RelativeDocumentMoniker": "ProductPage.cs",
-              "ToolTip": "C:\\Users\\matia\\Documents\\JogosInvicta\\TrabalhoFinalDavidFerreira\\08-DavidFerreira-ProjetoFinal\\ProductPage.cs",
-              "RelativeToolTip": "ProductPage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T08:49:43.438Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ShoppinArea.cs [Projeto]",
-              "DocumentMoniker": "C:\\Users\\matia\\Documents\\JogosInvicta\\TrabalhoFinalDavidFerreira\\08-DavidFerreira-ProjetoFinal\\ShoppinArea.cs",
-              "RelativeDocumentMoniker": "ShoppinArea.cs",
-              "ToolTip": "C:\\Users\\matia\\Documents\\JogosInvicta\\TrabalhoFinalDavidFerreira\\08-DavidFerreira-ProjetoFinal\\ShoppinArea.cs [Projeto]",
-              "RelativeToolTip": "ShoppinArea.cs [Projeto]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T08:49:22.163Z",
-              "EditorCaption": " [Projeto]"
+              "WhenOpened": "2025-06-05T08:55:42.499Z"
             }
           ]
         }
