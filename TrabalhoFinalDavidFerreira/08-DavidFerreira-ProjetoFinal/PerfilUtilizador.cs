@@ -12,18 +12,13 @@ namespace _08_DavidFerreira_ProjetoFinal
 {
     public partial class PerfilUtilizador : Form
     {
-        Cliente Customer;
-        string oldPass = "";
-
         public event EventHandler? returnHome;
         public event EventHandler? deleteAccount;
-        public PerfilUtilizador(ref Cliente c)
+        public PerfilUtilizador()
         {
             InitializeComponent();
-            resetToDefault(ref c);
+            resetToDefault();
         }
-
-        public Cliente Cliente { get { return Customer; } set { Customer = value; } }
 
         public void resetPasswords()
         {
@@ -32,15 +27,14 @@ namespace _08_DavidFerreira_ProjetoFinal
             txtOldPassword.Text = "";
         }
 
-        public void resetToDefault(ref Cliente c)
+        public void resetToDefault()
         {
-            Customer = c;
-            txtCidade.Text = c.Cidade;
-            txtCodPostal.Text = c.CodPostal;
-            txtEmail.Text = c.Email;
-            txtNomeCliente.Text = c.NomeCliente;
-            txtRua.Text = c.Address;
-            txtTelefone.Text = c.Telefone;
+            txtCidade.Text = GlobalVars.currentCustomer.Cidade;
+            txtCodPostal.Text = GlobalVars.currentCustomer.CodPostal;
+            txtEmail.Text = GlobalVars.currentCustomer.Email;
+            txtNomeCliente.Text = GlobalVars.currentCustomer.NomeCliente;
+            txtRua.Text = GlobalVars.currentCustomer.Address;
+            txtTelefone.Text = GlobalVars.currentCustomer.Telefone;
             List<string> strsPaises = DataManagement.retrieveSingleColumn(GlobalVars.strProvider, "Paises", "Pais");
 
             for (int i = 0; i < strsPaises.Count; i++)
@@ -48,7 +42,7 @@ namespace _08_DavidFerreira_ProjetoFinal
                 cboPaises.Items.Add(strsPaises[i]);
             }
 
-            cboPaises.SelectedItem = Customer.Pais.NomePais;
+            cboPaises.SelectedItem = GlobalVars.currentCustomer.Pais.NomePais;
 
             resetPasswords();
         }
@@ -92,7 +86,7 @@ namespace _08_DavidFerreira_ProjetoFinal
             bool changedPassword = true;
             if (txtOldPassword.Text.Length != 0)
             {
-                if (txtOldPassword.Text != oldPass && changedPassword)
+                if (txtOldPassword.Text != GlobalVars.currentCustomer.Password && changedPassword)
                 {
                     MessageBox.Show("A sua Password antiga não corresponde à introduzida.");
                     changedPassword = false;
@@ -126,7 +120,7 @@ namespace _08_DavidFerreira_ProjetoFinal
             colunas.Add("PalavraPasse");
 
             List<string> values = new List<string>();
-            values.Add(Customer.Id.ToString());
+            values.Add(GlobalVars.currentCustomer.Id.ToString());
             values.Add(txtNomeCliente.Text);
             values.Add(txtTelefone.Text);
             values.Add(txtEmail.Text);
@@ -138,7 +132,7 @@ namespace _08_DavidFerreira_ProjetoFinal
             {
                 values.Add(txtNewPassword.Text);
             }
-            else values.Add(oldPass);
+            else values.Add(GlobalVars.currentCustomer.Password);
             int n = DataManagement.updateDatabase(GlobalVars.strProvider, "Cliente", colunas, values);
             if (n == GlobalVars.aOk)
             {
